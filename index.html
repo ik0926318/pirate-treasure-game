@@ -1,43 +1,191 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>海賊王の秘宝</title>
 <style>
-body{margin:0;background:#101e2c;color:#f6e5b8;font-family:sans-serif;text-align:center}
-main{max-width:500px;margin:40px auto;padding:25px}
-h1{color:#f5c56b}
-.panel{border:2px solid #b88b43;border-radius:15px;padding:25px;background:#233448}
-input{padding:14px;font-size:22px;width:100px;text-align:center}
-button{padding:14px 30px;background:#c49a4d;border:0;border-radius:8px;font-weight:bold;margin-top:15px}
-#message{margin-top:20px;line-height:1.8}
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 30px 18px;
+  font-family: Georgia, "Yu Mincho", serif;
+  color: #f8e6ba;
+  text-align: center;
+  background:
+    radial-gradient(circle at center, #374b4a, #101c25 75%);
+}
+
+.game {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 28px 20px;
+  border: 2px solid #b9934f;
+  border-radius: 14px;
+  background: rgba(15, 26, 34, 0.95);
+  box-shadow: 0 0 35px #0009;
+}
+
+.symbol { font-size: 44px; }
+
+h1 {
+  color: #f3c76e;
+  font-size: 30px;
+  text-shadow: 0 2px 8px #000;
+}
+
+.subtitle {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #bba67e;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #8b7044;
+  margin: 25px 0;
+}
+
+.mission {
+  color: #d4ad64;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+h2 { font-size: 22px; }
+
+.story {
+  line-height: 2;
+  font-size: 15px;
+}
+
+.cipher {
+  margin: 25px 0;
+  padding: 22px;
+  background: #e7d2a2;
+  color: #352515;
+  border: 5px double #9b7842;
+  border-radius: 5px;
+}
+
+.cipher strong {
+  display: block;
+  font-size: 34px;
+  letter-spacing: 6px;
+  margin: 12px 0;
+}
+
+.hint {
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  font-size: 22px;
+  text-align: center;
+  border: 2px solid #c7a35e;
+  border-radius: 8px;
+  background: #fff9e9;
+  color: #2d2418;
+}
+
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(#f6d486, #b78330);
+  color: #251a0c;
+  font-weight: bold;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 24px;
+  line-height: 2;
+  font-weight: bold;
+}
+
+.success { color: #91efb1; }
+.error { color: #ff9b8c; }
+
+.footer {
+  margin-top: 25px;
+  color: #978668;
+  font-size: 12px;
+}
 </style>
 </head>
 <body>
-<main>
-<h1>☠ 海賊王の秘宝 ☠</h1>
-<p>MISSION 01 — 呪われた航海日誌</p>
-<div class="panel">
-<h2>海賊王からの挑戦状</h2>
-<p>暗号「VHYHQ」を3文字前に戻せ。</p>
-<p>現れた英語の数字を入力せよ。</p>
-<input id="answer" type="text" inputmode="numeric" maxlength="1" placeholder="?">
-<br>
-<button onclick="checkAnswer()">解錠する</button>
-<div id="message" aria-live="polite"></div>
+
+<div class="game">
+  <div class="symbol">☠️</div>
+  <div class="subtitle">PIRATE TREASURE HUNT</div>
+  <h1>海賊王の秘宝</h1>
+  <p>⚓ 失われた財宝を探せ ⚓</p>
+
+  <hr>
+
+  <div class="mission">MISSION 01</div>
+  <h2>呪われた航海日誌</h2>
+
+  <p class="story">
+    古びた航海日誌を発見した。<br>
+    そこには謎の暗号が記されている。<br>
+    暗号を解き、封印を解除せよ！
+  </p>
+
+  <div class="cipher">
+    📜 航海日誌の暗号
+    <strong>VHYHQ</strong>
+    <div class="hint">
+      アルファベットを3文字戻せ。<br>
+      導かれた英単語を数字に変えよ。
+    </div>
+  </div>
+
+  <p>🔐 封印の数字を入力せよ</p>
+  <input
+    type="number"
+    id="answer"
+    placeholder="数字を入力"
+    inputmode="numeric"
+  >
+
+  <button onclick="checkAnswer()">
+    ⚔️ 封印を解除する
+  </button>
+
+  <div id="result" aria-live="polite"></div>
+
+  <div class="footer">
+    BE-FIT TREASURE ADVENTURE
+  </div>
 </div>
-</main>
+
 <script>
-function checkAnswer(){
-const answer=document.getElementById("answer").value;
-const message=document.getElementById("message");
-if(answer==="7"){
-message.innerHTML="🔓 封印解除成功！<br>次の手がかりを探せ！";
-}else{
-message.textContent="暗号が違うようだ。もう一度考えよう。";
-}
+function checkAnswer() {
+  const answer = document.getElementById("answer").value;
+  const result = document.getElementById("result");
+
+  if (answer.trim() === "7") {
+    result.className = "success";
+    result.innerHTML =
+      "🔓 封印解除成功！<br>🏴‍☠️ 次の手がかりを探せ！";
+  } else {
+    result.className = "error";
+    result.textContent =
+      "☠️ 暗号が違うようだ。もう一度考えよ！";
+  }
 }
 </script>
+
 </body>
 </html>
