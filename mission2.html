@@ -3,108 +3,66 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>海賊王の秘宝｜消える宝島</title>
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;
- min-height:100vh;
- padding:20px 12px;
+ margin:0;min-height:100vh;padding:20px 12px;
  background:radial-gradient(circle at top,#344b55,#101b29 75%);
- color:#f5dfb2;
- font-family:Georgia,"Yu Mincho",serif;
+ color:#f5dfb2;font-family:Georgia,"Yu Mincho",serif;
  text-align:center;
 }
 .game{
- max-width:460px;
- margin:auto;
- padding:24px 15px;
- background:#1b2934;
- border:2px solid #bc9552;
+ max-width:460px;margin:auto;padding:24px 15px;
+ background:#1b2934;border:2px solid #bc9552;
  border-radius:16px;
 }
 small{color:#d6b678;letter-spacing:3px}
 h1{color:#f1c775;font-size:26px}
 .paper,.map{
- background:#ead5a8;
- color:#392719;
- border-radius:12px;
- padding:18px 12px;
- margin:18px 0;
- line-height:1.9;
+ background:#ead5a8;color:#392719;
+ border-radius:12px;padding:18px 12px;
+ margin:18px 0;line-height:1.9;
 }
-.map{
- border:5px double #a97b3c;
- min-height:330px;
+.map{border:5px double #a97b3c;min-height:330px}
+.code-progress{display:flex;justify-content:center;gap:12px}
+.code-slot{
+ background:#ead5a8;color:#392719;
+ width:78px;padding:12px 5px;border-radius:9px;
 }
-.islands{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:12px;
- margin:15px 0;
-}
-.island{
- background:#f8e9c7;
- color:#392719;
- border:2px solid #b99962;
- border-radius:12px;
- padding:17px 8px;
- font-size:16px;
- cursor:pointer;
-}
-.island span{
- display:block;
- font-size:35px;
- margin-bottom:8px;
+.code-slot span{display:block;font-size:12px}
+.code-slot strong{font-size:34px}
+.islands,.answers{
+ display:grid;grid-template-columns:1fr 1fr;
+ gap:12px;margin:15px 0;
 }
 button{
- cursor:pointer;
- border:0;
- border-radius:9px;
- padding:13px 15px;
- background:#d4a655;
- color:#291c0c;
- font-size:15px;
- font-weight:bold;
+ cursor:pointer;border:0;border-radius:9px;
+ padding:13px 10px;background:#d4a655;
+ color:#291c0c;font-size:15px;font-weight:bold;
 }
+.island{
+ background:#f8e9c7;border:2px solid #b99962;
+ padding:17px 8px;
+}
+.island span{display:block;font-size:35px}
 #clue{
- min-height:95px;
- padding:12px;
- line-height:1.8;
- background:#f8e9c7;
- border-radius:8px;
+ min-height:95px;padding:12px;line-height:1.8;
+ background:#f8e9c7;border-radius:8px;
 }
 #back{display:none}
 #flip{width:100%;margin-top:10px}
-.answers{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:10px;
-}
-#feedback{min-height:28px}
+#feedback{min-height:30px}
 #result{
- display:none;
- background:#ead5a8;
- color:#392719;
- border-radius:12px;
- padding:20px 12px;
- line-height:2;
- margin-top:20px;
- animation:appear .5s ease;
+ display:none;background:#ead5a8;color:#392719;
+ border-radius:12px;padding:20px 12px;
+ line-height:2;margin-top:20px;
 }
-#result h1{
- font-size:58px;
- color:#8d531b;
-}
+.number{font-size:70px;color:#8d531b;font-weight:bold}
 .message{
- border:2px dashed #9e7544;
- border-radius:10px;
+ border:2px dashed #9e7544;border-radius:10px;
  padding:14px 10px;
-}
-@keyframes appear{
- from{opacity:0;transform:translateY(12px)}
- to{opacity:1;transform:translateY(0)}
 }
 </style>
 </head>
@@ -114,18 +72,25 @@ button{
 <h1>🗺️ 消える宝島</h1>
 
 <div class="paper">
-📜 海賊王の航海日誌<br><br>
-「4つの島に4つの石碑。<br>
-財宝が眠る島はただ1つ。<br>
-だが、石碑の言葉には偽りが潜む。<br><br>
-地図の表と裏を調べ、<br>
-真の宝島を見つけ出せ！」
+<strong>🏴‍☠️ 第2の試練</strong>
+<p>
+この謎を解けば、宝箱の暗証番号<br>
+<strong>2桁目</strong>が手に入る！
+</p>
+<p>4つの島を調べ、財宝が眠る島を探し出せ！</p>
 </div>
 
+<div class="code-progress">
+<div class="code-slot"><span>1桁目</span><strong>?</strong></div>
+<div class="code-slot"><span>2桁目</span><strong id="slot2">?</strong></div>
+<div class="code-slot"><span>3桁目</span><strong>?</strong></div>
+</div>
+
+<div id="playArea">
 <div class="map">
 <div id="front">
 <h3>⚓ 古びた宝の地図</h3>
-<p>島をタップして石碑を読もう。</p>
+<p>島をタップして石碑を調べよう。</p>
 
 <div class="islands">
 <button class="island" onclick="inspect('skull')">
@@ -142,15 +107,13 @@ button{
 </button>
 </div>
 
-<div id="clue">
-石碑を調べると、言葉が現れる。
-</div>
+<div id="clue">石碑を調べると、言葉が現れる。</div>
 </div>
 
 <div id="back">
 <h3>📜 地図の裏側</h3>
-<p>かすれた文字が浮かび上がった……</p>
-<p style="font-size:30px">☠️ ⚓ ☠️</p>
+<p>古い文字が浮かび上がった……</p>
+<p style="font-size:32px">☠️ ⚓ ☠️</p>
 <p>
 「4つの石碑のうち、<br>
 真実を語るのはただ1つ。<br>
@@ -160,9 +123,7 @@ button{
 </div>
 </div>
 
-<button id="flip" onclick="flipMap()">
-🔄 地図を裏返す
-</button>
+<button id="flip" onclick="flipMap()">🔄 地図を裏返す</button>
 
 <div class="paper">
 <h3>🔐 財宝が眠る島を選べ！</h3>
@@ -172,23 +133,21 @@ button{
 <button onclick="answer('mermaid')">🧜 人魚島</button>
 <button onclick="answer('storm')">🌪️ 嵐島</button>
 </div>
-<p id="feedback"></p>
+<p id="feedback" aria-live="polite"></p>
+</div>
 </div>
 
 <div id="result">
-<h2>🏴‍☠️ 第2の試練突破！</h2>
-<p>見事だ！真の宝島を見つけたな。</p>
-<p>🔐 宝箱の2桁目は</p>
-<h1>4</h1>
-<p>この数字を忘れるな！</p>
-
+<h2>🎉 第2の試練突破！</h2>
+<p>宝箱の暗証番号<br><strong>2桁目は……</strong></p>
+<div class="number">4</div>
+<p>この数字を忘れずに覚えておこう！</p>
 <div class="message">
-<strong>📜 海賊王からの新たな指令</strong>
+<strong>📜 次なる試練への手がかり</strong>
 <p>
-「次なる試練は、<br>
-潮風が吹き抜け、<br>
-大空の下で力を試す場所に眠る。<br><br>
-最後の印を探し出せ！」
+「潮風が吹き抜け、<br>
+大空の下で力を試す場所。<br>
+そこに最後の試練が眠る。」
 </p>
 </div>
 </div>
@@ -199,35 +158,32 @@ let flipped=false;
 let cleared=false;
 
 const clues={
- skull:"💀 ドクロ島の石碑：『財宝は月影島か人魚島にある』",
- moon:"🌙 月影島の石碑：『財宝はドクロ島にはない』",
+ skull:"💀 ドクロ島の石碑：『財宝は月影島にある』",
+ moon:"🌙 月影島の石碑：『財宝は人魚島にある』",
  mermaid:"🧜 人魚島の石碑：『財宝は嵐島にある』",
- storm:"🌪️ 嵐島の石碑：『財宝は人魚島にはない』"
+ storm:"🌪️ 嵐島の石碑：『財宝は月影島にはない』"
 };
 
 function inspect(island){
- if(flipped)return;
+ if(flipped||cleared)return;
  document.getElementById("clue").textContent=clues[island];
 }
-
 function flipMap(){
+ if(cleared)return;
  flipped=!flipped;
- document.getElementById("front").style.display=
-  flipped?"none":"block";
- document.getElementById("back").style.display=
-  flipped?"block":"none";
+ document.getElementById("front").style.display=flipped?"none":"block";
+ document.getElementById("back").style.display=flipped?"block":"none";
  document.getElementById("flip").textContent=
   flipped?"🔄 地図を表に戻す":"🔄 地図を裏返す";
 }
-
 function answer(island){
  if(cleared)return;
  const feedback=document.getElementById("feedback");
-
  if(island==="skull"){
   cleared=true;
-  feedback.textContent="⚓ 正解！宝島を発見した！";
+  document.getElementById("playArea").style.display="none";
   document.getElementById("result").style.display="block";
+  document.getElementById("slot2").textContent="4";
  }else{
   feedback.textContent="☠️ その島には財宝がないようだ。";
  }
