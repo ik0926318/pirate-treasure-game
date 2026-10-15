@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第2の試練｜海賊王の秘宝</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 30px 18px;
+  font-family: Georgia, "Yu Mincho", serif;
+  text-align: center;
+  color: #f8e6ba;
+  background: radial-gradient(circle, #374b4a, #101c25 75%);
+}
+.game {
+  max-width: 480px;
+  margin: auto;
+  padding: 28px 20px;
+  border: 2px solid #b9934f;
+  border-radius: 14px;
+  background: #0f1a22;
+  box-shadow: 0 0 35px #0009;
+}
+h1 { color: #f3c76e; }
+.mission {
+  color: #d4ad64;
+  letter-spacing: 2px;
+}
+.story { line-height: 2; }
+.map {
+  margin: 25px 0;
+  padding: 22px;
+  background: #e7d2a2;
+  color: #352515;
+  border: 5px double #9b7842;
+  border-radius: 5px;
+}
+.map strong {
+  display: block;
+  font-size: 30px;
+  margin: 15px 0;
+}
+input {
+  width: 100%;
+  padding: 15px;
+  font-size: 22px;
+  text-align: center;
+  border-radius: 8px;
+  border: 2px solid #c7a35e;
+  background: #fff9e9;
+}
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 16px;
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(#f6d486, #b78330);
+  color: #251a0c;
+  font-size: 17px;
+  font-weight: bold;
+}
+#result {
+  margin-top: 24px;
+  line-height: 2;
+}
+.success { color: #91efb1; }
+.error { color: #ff9b8c; }
+</style>
+</head>
+<body>
+<div class="game">
+  <div style="font-size:44px">🗺️</div>
+  <p>🏴‍☠️ 海賊王の秘宝 🏴‍☠️</p>
+  <p class="mission">MISSION 02</p>
+  <h1>呪われた宝の地図</h1>
+
+  <p class="story">
+    海賊の宝の地図を発見した。<br>
+    地図には奇妙な数字が残されている。<br>
+    隠された数字を導き出せ！
+  </p>
+
+  <div class="map">
+    📜 古びた宝の地図
+    <strong>2 → 4 → 8 → 16 → ?</strong>
+    <p>数字にはある法則がある。<br>
+    次に続く数字はいくつだ？</p>
+  </div>
+
+  <p>🔐 答えを入力せよ</p>
+  <input type="number" id="answer"
+    placeholder="数字を入力" inputmode="numeric">
+
+  <button onclick="checkAnswer()">
+    ⚔️ 解読する
+  </button>
+
+  <div id="result" aria-live="polite"></div>
+</div>
+
+<script>
+function checkAnswer() {
+  const answer = document.getElementById("answer").value;
+  const result = document.getElementById("result");
+
+  if (answer.trim() === "32") {
+    result.className = "success";
+    result.innerHTML =
+      "🔓 第2の試練クリア！<br>" +
+      "💎 宝箱の暗証番号・2桁目は【4】<br>" +
+      "🧭 次の手がかりは、空の下にある。<br>" +
+      "外のエリアへ向かえ！";
+  } else {
+    result.className = "error";
+    result.textContent =
+      "☠️ 不正解！ 地図をもう一度調べよ。";
+  }
+}
+</script>
+</body>
+</html>
