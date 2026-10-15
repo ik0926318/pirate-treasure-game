@@ -93,8 +93,8 @@ button {
   </div>
 
   <p>🔐 答えを入力せよ</p>
-  <input type="number" id="answer"
-    placeholder="数字を入力" inputmode="numeric">
+ <input type="text" id="answer"
+  placeholder="数字を入力" inputmode="numeric">
 
   <button onclick="checkAnswer()">
     ⚔️ 解読する
@@ -105,7 +105,11 @@ button {
 
 <script>
 function checkAnswer() {
-  const answer = document.getElementById("answer").value;
+  const answer = document.getElementById("answer").value
+  .trim()
+  .replace(/[０-９]/g, c =>
+    String.fromCharCode(c.charCodeAt(0) - 65248)
+  );
   const result = document.getElementById("result");
 
   if (answer.trim() === "32") {
