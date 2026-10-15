@@ -177,8 +177,11 @@ function checkAnswer() {
 
   if (answer.trim() === "7") {
     result.className = "success";
-    result.innerHTML =
-      "🔓 封印解除成功！<br>🏴‍☠️ 次の手がかりを探せ！";
+   result.innerHTML =
+  "🔓 第1の試練クリア！<br>" +
+  "💎 宝箱の暗証番号・1桁目は【7】<br><br>" +
+  "🧭 次の手がかりは、冒険者が姿を整える場所にある。<br>" +
+  "更衣室へ向かえ！";
   } else {
     result.className = "error";
     result.textContent =
