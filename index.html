@@ -3,305 +3,137 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>海賊王の秘宝｜狂った羅針盤</title>
-
 <style>
-*{
- box-sizing:border-box;
-}
-
+*{box-sizing:border-box}
 body{
- margin:0;
- min-height:100vh;
- padding:20px 12px;
+ margin:0;min-height:100vh;padding:20px 12px;
  background:radial-gradient(circle at top,#344b55,#101b29 75%);
- color:#f5dfb2;
- font-family:Georgia,"Yu Mincho",serif;
+ color:#f5dfb2;font-family:Georgia,"Yu Mincho",serif;
  text-align:center;
 }
-
 .game{
- max-width:460px;
- margin:auto;
- padding:24px 15px;
- background:#1b2934;
- border:2px solid #bc9552;
+ max-width:460px;margin:auto;padding:24px 15px;
+ background:#1b2934;border:2px solid #bc9552;
  border-radius:16px;
 }
-
-small{
- color:#d6b678;
- letter-spacing:3px;
+small{color:#d6b678;letter-spacing:3px}
+h1{color:#f1c775;font-size:27px}
+.paper,.hint{
+ background:#ead5a8;color:#392719;border-radius:12px;
+ padding:17px 13px;margin:18px 0;line-height:1.9;
 }
-
-h1{
- color:#f1c775;
- font-size:27px;
-}
-
-.paper{
- background:#ead5a8;
- color:#392719;
- border-radius:12px;
- padding:17px 13px;
- margin:18px 0;
- line-height:1.9;
-}
-
-.progress{
- display:flex;
- gap:8px;
+.hint{border:3px double #b38a4e}
+.hint h2{font-size:19px}
+#question{font-size:19px;font-weight:bold}
+.code-progress{
+ display:flex;justify-content:center;gap:12px;
  margin:18px 0;
 }
-
+.code-slot{
+ background:#ead5a8;color:#392719;
+ width:78px;padding:12px 5px;border-radius:9px;
+}
+.code-slot span{display:block;font-size:12px}
+.code-slot strong{font-size:34px}
+.progress{display:flex;gap:8px;margin:18px 0}
 .step{
- flex:1;
- border:1px solid #b08c51;
- border-radius:8px;
- padding:10px 4px;
- background:#283843;
- font-size:13px;
+ flex:1;border:1px solid #b08c51;border-radius:8px;
+ padding:10px 4px;background:#283843;font-size:13px;
 }
-
-.step.active{
- background:#d4a655;
- color:#291c0c;
- font-weight:bold;
-}
-
-.step.done{
- background:#315e4a;
- color:#e8ffdf;
-}
-
-.hint{
- background:#ead5a8;
- color:#392719;
- border:3px double #b38a4e;
- border-radius:12px;
- padding:16px 10px;
- margin:18px 0;
-}
-
-.hint h2{
- font-size:19px;
- margin:5px 0 12px;
-}
-
-#question{
- font-size:19px;
- font-weight:bold;
- line-height:1.8;
-}
-
+.step.active{background:#d4a655;color:#291c0c}
+.step.done{background:#315e4a;color:#e8ffdf}
 .compass{
- position:relative;
- width:255px;
- height:255px;
- margin:22px auto;
- border:9px solid #bc9552;
+ position:relative;width:255px;height:255px;
+ margin:22px auto;border:9px solid #bc9552;
  border-radius:50%;
  background:radial-gradient(circle,#f2dfb3,#c7a66d);
- box-shadow:
-  0 0 0 4px #624924,
-  0 8px 20px #0007;
+ box-shadow:0 0 0 4px #624924,0 8px 20px #0007;
  color:#4d301c;
 }
-
-.direction{
- position:absolute;
- font-size:23px;
- font-weight:bold;
-}
-
-.north{
- top:8px;
- left:50%;
- transform:translateX(-50%);
-}
-
-.south{
- bottom:8px;
- left:50%;
- transform:translateX(-50%);
-}
-
-.east{
- right:12px;
- top:50%;
- transform:translateY(-50%);
-}
-
-.west{
- left:12px;
- top:50%;
- transform:translateY(-50%);
-}
-
-.compass-line{
- position:absolute;
- top:50%;
- left:50%;
- width:180px;
- height:180px;
- border:1px solid #9b8058;
- border-radius:50%;
- transform:translate(-50%,-50%);
-}
-
+.direction{position:absolute;font-size:23px;font-weight:bold}
+.north{top:8px;left:50%;transform:translateX(-50%)}
+.south{bottom:8px;left:50%;transform:translateX(-50%)}
+.east{right:12px;top:50%;transform:translateY(-50%)}
+.west{left:12px;top:50%;transform:translateY(-50%)}
 .needle{
- position:absolute;
- top:50%;
- left:50%;
- width:0;
- height:0;
+ position:absolute;top:50%;left:50%;width:0;height:0;
  transform:translate(-50%,-50%) rotate(0deg);
  transition:transform .3s ease;
 }
-
-.needle::before{
- content:"";
- position:absolute;
- bottom:0;
- left:-13px;
+.needle:before{
+ content:"";position:absolute;bottom:0;left:-13px;
  border-left:13px solid transparent;
  border-right:13px solid transparent;
  border-bottom:88px solid #a32e25;
 }
-
-.needle::after{
- content:"";
- position:absolute;
- top:0;
- left:-13px;
+.needle:after{
+ content:"";position:absolute;top:0;left:-13px;
  border-left:13px solid transparent;
  border-right:13px solid transparent;
  border-top:88px solid #384c5b;
 }
-
 .center{
- position:absolute;
- width:19px;
- height:19px;
- background:#d5a94c;
- border:3px solid #68491f;
- border-radius:50%;
- top:50%;
- left:50%;
+ position:absolute;width:19px;height:19px;
+ background:#d5a94c;border:3px solid #68491f;
+ border-radius:50%;top:50%;left:50%;
  transform:translate(-50%,-50%);
- z-index:2;
 }
-
-.current{
- font-size:17px;
- margin:15px 0;
-}
-
-#selected{
- font-weight:bold;
- color:#f1c775;
- font-size:23px;
-}
-
-.controls{
- display:flex;
- gap:10px;
-}
-
+#selected{color:#f1c775;font-size:23px;font-weight:bold}
+.controls{display:flex;gap:10px}
 button{
- cursor:pointer;
- border:0;
- border-radius:9px;
- padding:14px 12px;
- background:#d4a655;
- color:#291c0c;
- font-size:15px;
- font-weight:bold;
+ cursor:pointer;border:0;border-radius:9px;
+ padding:14px 12px;background:#d4a655;
+ color:#291c0c;font-size:15px;font-weight:bold;
 }
-
-.controls button{
- flex:1;
-}
-
-.confirm{
- width:100%;
- margin-top:14px;
- font-size:17px;
- background:#f0c875;
-}
-
-#feedback{
- min-height:52px;
- margin:16px 0 0;
- line-height:1.7;
- font-weight:bold;
-}
-
+.controls button{flex:1}
+.confirm{width:100%;margin-top:14px;background:#f0c875}
+#feedback{min-height:52px;line-height:1.7}
 #result{
- display:none;
- background:#ead5a8;
- color:#392719;
- border-radius:12px;
- padding:20px 12px;
- line-height:2;
- margin-top:20px;
- animation:appear .5s ease;
+ display:none;background:#ead5a8;color:#392719;
+ border-radius:12px;padding:20px 12px;
+ line-height:2;margin-top:20px;
 }
-
-#result h1{
- font-size:65px;
- color:#8d531b;
- margin:5px;
-}
-
+.number{font-size:70px;color:#8d531b;font-weight:bold}
 .message{
- border:2px dashed #9e7544;
- border-radius:10px;
- padding:14px 10px;
- margin-top:15px;
-}
-
-@keyframes appear{
- from{
-  opacity:0;
-  transform:translateY(12px);
- }
- to{
-  opacity:1;
-  transform:translateY(0);
- }
+ border:2px dashed #9e7544;border-radius:10px;
+ padding:14px 10px;margin-top:15px;
 }
 </style>
 </head>
-
 <body>
-
 <div class="game">
-
 <small>MISSION 01</small>
 <h1>🧭 狂った羅針盤</h1>
 
 <div class="paper">
-📜 海賊王からの挑戦状
-<br><br>
-「我が秘宝を求める者よ。<br>
-3つの方角を正しい順番で示せ。<br>
-すべてを指し示した時、<br>
-宝箱の最初の数字が現れるだろう。」
+<strong>🏴‍☠️ 海賊王の宝探し</strong>
+<p>
+館内に隠された3つの試練をクリアして、<br>
+宝箱の3桁の暗証番号を集めよう！
+</p>
+<p>
+この第1問をクリアすると、<br>
+<strong>暗証番号の1桁目</strong>が手に入る！
+</p>
+</div>
+
+<div class="code-progress">
+<div class="code-slot"><span>1桁目</span><strong>?</strong></div>
+<div class="code-slot"><span>2桁目</span><strong>?</strong></div>
+<div class="code-slot"><span>3桁目</span><strong>?</strong></div>
 </div>
 
 <div class="paper">
-<strong>⚓ 遊び方</strong>
-<br>
+<strong>⚓ 遊び方</strong><br>
 ① ヒントを読む<br>
 ② 左右のボタンで赤い針を回す<br>
-③ 正しい方角に合わせて決定！<br>
-④ これを全部で3回繰り返そう！
+③ 正しい方角で決定する<br>
+④ 3つの方角を順番に当てよう！
 </div>
 
 <div id="playArea">
-
 <div class="progress">
 <div class="step active" id="step0">① 1つ目</div>
 <div class="step" id="step1">② 2つ目</div>
@@ -310,203 +142,107 @@ button{
 
 <div class="hint">
 <h2 id="stageTitle">第1の方角を探せ！</h2>
-<div id="question">
-「太陽が沈む方角を指せ」
-</div>
+<div id="question">「太陽が沈む方角を指せ」</div>
 </div>
 
 <div class="compass">
-
-<div class="compass-line"></div>
-
 <div class="direction north">北</div>
 <div class="direction south">南</div>
 <div class="direction east">東</div>
 <div class="direction west">西</div>
-
 <div class="needle" id="needle"></div>
 <div class="center"></div>
-
 </div>
 
-<div class="current">
-赤い針が指している方角：
-<span id="selected">北</span>
-</div>
+<p>赤い針が指す方角：<span id="selected">北</span></p>
 
 <div class="controls">
-<button onclick="rotateLeft()">
-◀ 左に回す
-</button>
-
-<button onclick="rotateRight()">
-右に回す ▶
-</button>
+<button onclick="rotate(-1)">◀ 左に回す</button>
+<button onclick="rotate(1)">右に回す ▶</button>
 </div>
 
 <button class="confirm" onclick="confirmDirection()">
 ⚓ この方角で決定！
 </button>
-
-<p id="feedback"></p>
-
+<p id="feedback" aria-live="polite"></p>
 </div>
 
 <div id="result">
-
-<h2>🏴‍☠️ 第1の試練突破！</h2>
-
-<p>
-見事だ、冒険者よ！<br>
-3つの方角をすべて示したな。
-</p>
-
-<p>🔐 宝箱の1桁目は</p>
-
-<h1>9</h1>
-
-<p>
-この数字を忘れるな！
-</p>
-
+<h2>🎉 第1の試練突破！</h2>
+<p>宝箱の暗証番号<br><strong>1桁目は……</strong></p>
+<div class="number">9</div>
+<p>この数字を忘れずに覚えておこう！</p>
 <div class="message">
-
-<strong>📜 海賊王からの次なる指令</strong>
-
+<strong>📜 次なる試練への手がかり</strong>
 <p>
-「次なる秘密は、<br>
-冒険者が装いを整え、<br>
-新たな姿へと変わる場所の近く。<br><br>
+「冒険者が装いを整え、<br>
+新たな姿へと変わる場所の近く。<br>
 古びた地図を探し出せ！」
 </p>
-
 </div>
-
 </div>
-
 </div>
 
 <script>
-
 const questions=[
- {
-  text:"「太陽が沈む方角を指せ」",
-  answer:3
- },
- {
-  text:"「夜空に輝く北の星を指せ」",
-  answer:0
- },
- {
-  text:"「朝日が昇る方角を指せ」",
-  answer:1
- }
+ {text:"「太陽が沈む方角を指せ」",answer:3},
+ {text:"「夜空に輝く北の星を指せ」",answer:0},
+ {text:"「朝日が昇る方角を指せ」",answer:1}
 ];
-
 const directions=["北","東","南","西"];
-
 let stage=0;
 let direction=0;
 let finished=false;
 
 function updateCompass(){
-
- const angle=direction*90;
-
  document.getElementById("needle").style.transform=
-  "translate(-50%,-50%) rotate("+angle+"deg)";
-
- document.getElementById("selected").textContent=
-  directions[direction];
-
+  `translate(-50%,-50%) rotate(${direction*90}deg)`;
+ document.getElementById("selected").textContent=directions[direction];
 }
-
-function rotateLeft(){
-
+function rotate(amount){
  if(finished)return;
-
- direction=(direction+3)%4;
+ direction=(direction+amount+4)%4;
  updateCompass();
-
 }
-
-function rotateRight(){
-
- if(finished)return;
-
- direction=(direction+1)%4;
- updateCompass();
-
-}
-
 function updateStage(){
-
  document.getElementById("stageTitle").textContent=
-  "第"+(stage+1)+"の方角を探せ！";
-
- document.getElementById("question").textContent=
-  questions[stage].text;
-
+  `第${stage+1}の方角を探せ！`;
+ document.getElementById("question").textContent=questions[stage].text;
  for(let i=0;i<3;i++){
-
-  const step=document.getElementById("step"+i);
-
-  step.className="step";
-
+  const el=document.getElementById("step"+i);
+  el.className="step";
   if(i<stage){
-   step.classList.add("done");
-   step.textContent="✓ 正解";
+   el.classList.add("done");
+   el.textContent="✓ 正解";
   }else if(i===stage){
-   step.classList.add("active");
+   el.classList.add("active");
   }
-
  }
-
 }
-
 function confirmDirection(){
-
  if(finished)return;
-
  const feedback=document.getElementById("feedback");
-
  if(direction!==questions[stage].answer){
-
-  feedback.textContent=
-   "☠️ 方角が違うようだ。ヒントをもう一度読もう！";
-
   feedback.style.color="#ffaaa0";
+  feedback.textContent="☠️ 方角が違うようだ。もう一度考えよう！";
   return;
-
  }
-
  stage++;
-
  if(stage===3){
-
   finished=true;
-
   document.getElementById("playArea").style.display="none";
   document.getElementById("result").style.display="block";
-
+  document.querySelector(".code-slot strong").textContent="9";
   return;
-
  }
-
  feedback.style.color="#baf0b0";
- feedback.textContent=
-  "⚓ 正解！続いて第"+(stage+1)+"の方角を探そう！";
-
+ feedback.textContent=`⚓ 正解！続いて第${stage+1}の方角を探そう！`;
  direction=0;
  updateCompass();
  updateStage();
-
 }
-
 updateCompass();
 updateStage();
-
 </script>
-
 </body>
 </html>
