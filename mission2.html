@@ -3,127 +3,234 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第2の試練｜海賊王の秘宝</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>海賊王の秘宝｜消える宝島</title>
 <style>
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  min-height: 100vh;
-  padding: 30px 18px;
-  font-family: Georgia, "Yu Mincho", serif;
-  text-align: center;
-  color: #f8e6ba;
-  background: radial-gradient(circle, #374b4a, #101c25 75%);
+*{box-sizing:border-box}
+body{
+ margin:0;
+ min-height:100vh;
+ padding:20px 12px;
+ background:radial-gradient(circle at top,#344b55,#101b29 75%);
+ color:#f5dfb2;
+ font-family:Georgia,"Yu Mincho",serif;
+ text-align:center;
 }
-.game {
-  max-width: 480px;
-  margin: auto;
-  padding: 28px 20px;
-  border: 2px solid #b9934f;
-  border-radius: 14px;
-  background: #0f1a22;
-  box-shadow: 0 0 35px #0009;
+.game{
+ max-width:460px;
+ margin:auto;
+ padding:24px 15px;
+ background:#1b2934;
+ border:2px solid #bc9552;
+ border-radius:16px;
 }
-h1 { color: #f3c76e; }
-.mission {
-  color: #d4ad64;
-  letter-spacing: 2px;
+small{color:#d6b678;letter-spacing:3px}
+h1{color:#f1c775;font-size:26px}
+.paper,.map{
+ background:#ead5a8;
+ color:#392719;
+ border-radius:12px;
+ padding:18px 12px;
+ margin:18px 0;
+ line-height:1.9;
 }
-.story { line-height: 2; }
-.map {
-  margin: 25px 0;
-  padding: 22px;
-  background: #e7d2a2;
-  color: #352515;
-  border: 5px double #9b7842;
-  border-radius: 5px;
+.map{
+ border:5px double #a97b3c;
+ min-height:330px;
 }
-.map strong {
-  display: block;
-  font-size: 30px;
-  margin: 15px 0;
+.islands{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
+ margin:15px 0;
 }
-input {
-  width: 100%;
-  padding: 15px;
-  font-size: 22px;
-  text-align: center;
-  border-radius: 8px;
-  border: 2px solid #c7a35e;
-  background: #fff9e9;
+.island{
+ background:#f8e9c7;
+ color:#392719;
+ border:2px solid #b99962;
+ border-radius:12px;
+ padding:17px 8px;
+ font-size:16px;
+ cursor:pointer;
 }
-button {
-  width: 100%;
-  margin-top: 15px;
-  padding: 16px;
-  border: 0;
-  border-radius: 8px;
-  background: linear-gradient(#f6d486, #b78330);
-  color: #251a0c;
-  font-size: 17px;
-  font-weight: bold;
+.island span{
+ display:block;
+ font-size:35px;
+ margin-bottom:8px;
 }
-#result {
-  margin-top: 24px;
-  line-height: 2;
+button{
+ cursor:pointer;
+ border:0;
+ border-radius:9px;
+ padding:13px 15px;
+ background:#d4a655;
+ color:#291c0c;
+ font-size:15px;
+ font-weight:bold;
 }
-.success { color: #91efb1; }
-.error { color: #ff9b8c; }
+#clue{
+ min-height:95px;
+ padding:12px;
+ line-height:1.8;
+ background:#f8e9c7;
+ border-radius:8px;
+}
+#back{display:none}
+#flip{width:100%;margin-top:10px}
+.answers{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:10px;
+}
+#feedback{min-height:28px}
+#result{
+ display:none;
+ background:#ead5a8;
+ color:#392719;
+ border-radius:12px;
+ padding:20px 12px;
+ line-height:2;
+ margin-top:20px;
+ animation:appear .5s ease;
+}
+#result h1{
+ font-size:58px;
+ color:#8d531b;
+}
+.message{
+ border:2px dashed #9e7544;
+ border-radius:10px;
+ padding:14px 10px;
+}
+@keyframes appear{
+ from{opacity:0;transform:translateY(12px)}
+ to{opacity:1;transform:translateY(0)}
+}
 </style>
 </head>
 <body>
 <div class="game">
-  <div style="font-size:44px">🗺️</div>
-  <p>🏴‍☠️ 海賊王の秘宝 🏴‍☠️</p>
-  <p class="mission">MISSION 02</p>
-  <h1>呪われた宝の地図</h1>
+<small>MISSION 02</small>
+<h1>🗺️ 消える宝島</h1>
 
-  <p class="story">
-    海賊の宝の地図を発見した。<br>
-    地図には奇妙な数字が残されている。<br>
-    隠された数字を導き出せ！
-  </p>
+<div class="paper">
+📜 海賊王の航海日誌<br><br>
+「4つの島に4つの石碑。<br>
+財宝が眠る島はただ1つ。<br>
+だが、石碑の言葉には偽りが潜む。<br><br>
+地図の表と裏を調べ、<br>
+真の宝島を見つけ出せ！」
+</div>
 
-  <div class="map">
-    📜 古びた宝の地図
-    <strong>2 → 4 → 8 → 16 → ?</strong>
-    <p>数字にはある法則がある。<br>
-    次に続く数字はいくつだ？</p>
-  </div>
+<div class="map">
+<div id="front">
+<h3>⚓ 古びた宝の地図</h3>
+<p>島をタップして石碑を読もう。</p>
 
-  <p>🔐 答えを入力せよ</p>
- <input type="text" id="answer"
-  placeholder="数字を入力" inputmode="numeric">
+<div class="islands">
+<button class="island" onclick="inspect('skull')">
+<span>💀</span>ドクロ島
+</button>
+<button class="island" onclick="inspect('moon')">
+<span>🌙</span>月影島
+</button>
+<button class="island" onclick="inspect('mermaid')">
+<span>🧜</span>人魚島
+</button>
+<button class="island" onclick="inspect('storm')">
+<span>🌪️</span>嵐島
+</button>
+</div>
 
-  <button onclick="checkAnswer()">
-    ⚔️ 解読する
-  </button>
+<div id="clue">
+石碑を調べると、言葉が現れる。
+</div>
+</div>
 
-  <div id="result" aria-live="polite"></div>
+<div id="back">
+<h3>📜 地図の裏側</h3>
+<p>かすれた文字が浮かび上がった……</p>
+<p style="font-size:30px">☠️ ⚓ ☠️</p>
+<p>
+「4つの石碑のうち、<br>
+真実を語るのはただ1つ。<br>
+残る3つは偽りを語る。」
+</p>
+<p>すべての証言を照らし合わせよ。</p>
+</div>
+</div>
+
+<button id="flip" onclick="flipMap()">
+🔄 地図を裏返す
+</button>
+
+<div class="paper">
+<h3>🔐 財宝が眠る島を選べ！</h3>
+<div class="answers">
+<button onclick="answer('skull')">💀 ドクロ島</button>
+<button onclick="answer('moon')">🌙 月影島</button>
+<button onclick="answer('mermaid')">🧜 人魚島</button>
+<button onclick="answer('storm')">🌪️ 嵐島</button>
+</div>
+<p id="feedback"></p>
+</div>
+
+<div id="result">
+<h2>🏴‍☠️ 第2の試練突破！</h2>
+<p>見事だ！真の宝島を見つけたな。</p>
+<p>🔐 宝箱の2桁目は</p>
+<h1>4</h1>
+<p>この数字を忘れるな！</p>
+
+<div class="message">
+<strong>📜 海賊王からの新たな指令</strong>
+<p>
+「次なる試練は、<br>
+潮風が吹き抜け、<br>
+大空の下で力を試す場所に眠る。<br><br>
+最後の印を探し出せ！」
+</p>
+</div>
+</div>
 </div>
 
 <script>
-function checkAnswer() {
-  const answer = document.getElementById("answer").value
-  .trim()
-  .replace(/[０-９]/g, c =>
-    String.fromCharCode(c.charCodeAt(0) - 65248)
-  );
-  const result = document.getElementById("result");
+let flipped=false;
+let cleared=false;
 
-  if (answer.trim() === "32") {
-    result.className = "success";
-    result.innerHTML =
-      "🔓 第2の試練クリア！<br>" +
-      "💎 宝箱の暗証番号・2桁目は【4】<br>" +
-      "🧭 次の手がかりは、空の下にある。<br>" +
-      "外のエリアへ向かえ！";
-  } else {
-    result.className = "error";
-    result.textContent =
-      "☠️ 不正解！ 地図をもう一度調べよ。";
-  }
+const clues={
+ skull:"💀 ドクロ島の石碑：『財宝は月影島か人魚島にある』",
+ moon:"🌙 月影島の石碑：『財宝はドクロ島にはない』",
+ mermaid:"🧜 人魚島の石碑：『財宝は嵐島にある』",
+ storm:"🌪️ 嵐島の石碑：『財宝は人魚島にはない』"
+};
+
+function inspect(island){
+ if(flipped)return;
+ document.getElementById("clue").textContent=clues[island];
+}
+
+function flipMap(){
+ flipped=!flipped;
+ document.getElementById("front").style.display=
+  flipped?"none":"block";
+ document.getElementById("back").style.display=
+  flipped?"block":"none";
+ document.getElementById("flip").textContent=
+  flipped?"🔄 地図を表に戻す":"🔄 地図を裏返す";
+}
+
+function answer(island){
+ if(cleared)return;
+ const feedback=document.getElementById("feedback");
+
+ if(island==="skull"){
+  cleared=true;
+  feedback.textContent="⚓ 正解！宝島を発見した！";
+  document.getElementById("result").style.display="block";
+ }else{
+  feedback.textContent="☠️ その島には財宝がないようだ。";
+ }
 }
 </script>
 </body>
