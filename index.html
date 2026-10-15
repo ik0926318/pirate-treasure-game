@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>海賊王の秘宝</title>
+<style>
+body{margin:0;background:#101e2c;color:#f6e5b8;font-family:sans-serif;text-align:center}
+main{max-width:500px;margin:40px auto;padding:25px}
+h1{color:#f5c56b}
+.panel{border:2px solid #b88b43;border-radius:15px;padding:25px;background:#233448}
+input{padding:14px;font-size:22px;width:100px;text-align:center}
+button{padding:14px 30px;background:#c49a4d;border:0;border-radius:8px;font-weight:bold;margin-top:15px}
+#message{margin-top:20px;line-height:1.8}
+</style>
+</head>
+<body>
+<main>
+<h1>☠ 海賊王の秘宝 ☠</h1>
+<p>MISSION 01 — 呪われた航海日誌</p>
+<div class="panel">
+<h2>海賊王からの挑戦状</h2>
+<p>暗号「VHYHQ」を3文字前に戻せ。</p>
+<p>現れた英語の数字を入力せよ。</p>
+<input id="answer" type="text" inputmode="numeric" maxlength="1" placeholder="?">
+<br>
+<button onclick="checkAnswer()">解錠する</button>
+<div id="message" aria-live="polite"></div>
+</div>
+</main>
+<script>
+function checkAnswer(){
+const answer=document.getElementById("answer").value;
+const message=document.getElementById("message");
+if(answer==="7"){
+message.innerHTML="🔓 封印解除成功！<br>次の手がかりを探せ！";
+}else{
+message.textContent="暗号が違うようだ。もう一度考えよう。";
+}
+}
+</script>
+</body>
+</html>
