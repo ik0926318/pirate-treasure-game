@@ -2,175 +2,315 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>海賊王の秘宝｜最後の封印</title>
-<style>
-*{box-sizing:border-box}
-body{
- margin:0;min-height:100vh;padding:20px 12px;
- background:radial-gradient(circle at top,#344b55,#101b29 75%);
- color:#f5dfb2;font-family:Georgia,"Yu Mincho",serif;
- text-align:center;
-}
-.game{
- max-width:460px;margin:auto;padding:24px 15px;
- background:#1b2934;border:2px solid #bc9552;
- border-radius:16px;
-}
-small{color:#d6b678;letter-spacing:3px}
-h1{font-size:26px;color:#f1c775}
-.paper,.puzzle{
- background:#ead5a8;color:#392719;
- border-radius:12px;padding:18px 13px;
- margin:18px 0;line-height:1.9;
-}
-.puzzle{border:3px double #a97b3c}
-.code-progress{display:flex;justify-content:center;gap:12px}
-.code-slot{
- background:#ead5a8;color:#392719;
- width:78px;padding:12px 5px;border-radius:9px;
-}
-.code-slot span{display:block;font-size:12px}
-.code-slot strong{font-size:34px}
-.symbols{
- display:grid;grid-template-columns:repeat(3,1fr);
- gap:8px;margin:15px 0;
-}
-.symbol{
- background:#fff1cd;border:2px solid #b38b50;
- border-radius:9px;padding:12px 3px;
-}
-.emoji{font-size:30px}
-.symbol strong{display:block;font-size:24px}
-input{
- width:90px;padding:10px;border:2px solid #a97b3c;
- border-radius:8px;font-size:25px;text-align:center;
- background:#fff8e8;
-}
-button{
- border:0;border-radius:9px;padding:14px 18px;
- background:#d4a655;color:#291c0c;
- font-weight:bold;font-size:15px;cursor:pointer;
-}
-#puzzleFeedback{min-height:35px}
-#result{
- display:none;background:#ead5a8;color:#392719;
- padding:20px 12px;border-radius:12px;
- line-height:1.9;margin-top:18px;
-}
-.number{font-size:70px;font-weight:bold;color:#8d531b}
-.final-code{
- display:flex;justify-content:center;gap:10px;
- margin:18px 0;
-}
-.final-code div{
- width:75px;padding:12px 0;background:#fff1cd;
- border:3px solid #ad8446;border-radius:10px;
- font-size:42px;font-weight:bold;
-}
-.message{
- border:2px dashed #9e7544;border-radius:10px;
- padding:15px 10px;margin-top:18px;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第3問｜船乗りを導く見えない力</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 14px;
+      min-height: 100vh;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+      color: #3c2a1c;
+      background:
+        radial-gradient(circle at top, #344f60, #101f2b 75%);
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      color: #f5dfaa;
+      margin-bottom: 22px;
+    }
+
+    .header .mark {
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
+
+    .header .mission {
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: #d9bd7a;
+    }
+
+    .header h1 {
+      font-size: 26px;
+      line-height: 1.5;
+      margin: 12px 0;
+    }
+
+    .paper {
+      position: relative;
+      padding: 30px 23px;
+      border: 3px solid #a67a3e;
+      border-radius: 9px;
+      background:
+        radial-gradient(circle at 20% 20%, #fff4d4, transparent 55%),
+        linear-gradient(135deg, #f3e0b4, #e4c995);
+      box-shadow: 0 12px 35px rgba(0,0,0,.4);
+    }
+
+    .paper::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(121, 78, 34, .35);
+      border-radius: 3px;
+      pointer-events: none;
+    }
+
+    .illustration {
+      text-align: center;
+      font-size: 62px;
+      margin: 0 0 14px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: #8a6134;
+      margin-bottom: 12px;
+    }
+
+    .question-title {
+      text-align: center;
+      font-size: 21px;
+      margin: 0 0 24px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #b58d57;
+    }
+
+    .story {
+      font-size: 16px;
+      line-height: 2.15;
+      margin-bottom: 24px;
+    }
+
+    .story p {
+      margin: 0 0 14px;
+    }
+
+    .question {
+      font-weight: bold;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.8;
+      margin: 28px 0 20px;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      font-size: 18px;
+      text-align: center;
+      color: #3c2a1c;
+      background: #fffaf0;
+      border: 2px solid #a67a3e;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #69461d;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 13px;
+      font-size: 17px;
+      font-weight: bold;
+      color: #fff4d5;
+      background: linear-gradient(#76502b, #493017);
+      border: 2px solid #b99152;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(.99);
+    }
+
+    #result {
+      margin-top: 22px;
+      text-align: center;
+    }
+
+    .success {
+      padding: 22px 15px;
+      border: 2px solid #987039;
+      background: rgba(255, 250, 224, .75);
+      border-radius: 7px;
+    }
+
+    .success h2 {
+      font-size: 24px;
+      margin: 0 0 12px;
+      color: #69501f;
+    }
+
+    .number {
+      font-family: Georgia, serif;
+      font-size: 80px;
+      font-weight: bold;
+      color: #8b581f;
+      line-height: 1.3;
+      text-shadow: 1px 2px 0 #eacb82;
+    }
+
+    .success p {
+      font-size: 15px;
+      line-height: 1.9;
+      margin: 8px 0;
+    }
+
+    .error {
+      color: #922f25;
+      font-weight: bold;
+      line-height: 1.8;
+    }
+
+    .footer {
+      text-align: center;
+      color: #d7c18e;
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-top: 25px;
+    }
+
+    @media (max-width: 480px) {
+      .header h1 {
+        font-size: 22px;
+      }
+
+      .paper {
+        padding: 25px 18px;
+      }
+
+      .story {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="game">
-<small>MISSION 03</small>
-<h1>🏴‍☠️ 海賊王の最後の封印</h1>
 
-<div class="paper">
-<strong>📜 海賊王の最後の挑戦状</strong>
-<p>
-「よくぞここまで辿り着いた。<br>
-最後の謎を解けば、<br>
-宝箱の暗証番号<strong>3桁目</strong>が手に入る。」
-</p>
-</div>
+  <main class="container">
 
-<div class="code-progress">
-<div class="code-slot"><span>1桁目</span><strong>?</strong></div>
-<div class="code-slot"><span>2桁目</span><strong>?</strong></div>
-<div class="code-slot"><span>3桁目</span><strong id="slot3">?</strong></div>
-</div>
+    <header class="header">
+      <div class="mark">🏴‍☠️</div>
+      <div class="mission">FINAL MISSION</div>
+      <h1>第3問<br>船乗りを導く見えない力</h1>
+    </header>
 
-<div id="puzzleArea">
-<div class="puzzle">
-<h2>🪨 古代の海賊石板</h2>
-<p>錨の数と数字の関係を見破れ！</p>
+    <section class="paper">
 
-<div class="symbols">
-<div class="symbol">
-<div class="emoji">⚓</div><strong>2</strong>
-</div>
-<div class="symbol">
-<div class="emoji">⚓⚓</div><strong>4</strong>
-</div>
-<div class="symbol">
-<div class="emoji">⚓⚓⚓</div><strong>6</strong>
-</div>
-</div>
+      <div class="illustration">⛵🌊</div>
+      <div class="subtitle">THE LAST RIDDLE</div>
+      <h2 class="question-title">最後の航海の謎</h2>
 
-<p>錨が4つなら、数字はいくつ？</p>
-<div style="font-size:30px">⚓ ⚓ ⚓ ⚓</div>
-<p>答えを入力せよ！</p>
+      <div class="story">
+        <p>
+          航海に欠かせない「あるもの」があります。
+        </p>
 
-<input id="lastDigit" type="number"
- min="0" max="9" inputmode="numeric" placeholder="?">
+        <p>
+          それは目には見えませんが、存在を感じることができます。
+        </p>
 
-<div style="margin-top:15px">
-<button onclick="checkPuzzle()">⚔️ 数字を決定する</button>
-</div>
-<p id="puzzleFeedback" aria-live="polite"></p>
-</div>
-</div>
+        <p>
+          時には船乗りの味方となり、時には大きな脅威となります。
+        </p>
 
-<div id="result">
-<h2>🎉 すべての試練を突破！</h2>
-<p>宝箱の暗証番号<br><strong>3桁目は……</strong></p>
-<div class="number">8</div>
+        <p>
+          強すぎても、弱すぎても、航海を困難にします。
+        </p>
 
-<h2>🔐 3桁の暗証番号が完成！</h2>
+        <p>
+          海の上だけでなく、陸の上でもその存在を感じることができます。
+        </p>
+      </div>
 
-<div class="final-code">
-<div>9</div><div>4</div><div>8</div>
-</div>
+      <div class="question">
+        この「あるもの」とは何でしょう？
+      </div>
 
-<div class="message">
-<strong>🏴‍☠️ 海賊王からの最後の指令</strong>
-<p>
-「見事だ、冒険者よ！<br>
-3つの数字を携え、<br>
-最初の旅立ちの場所へ戻れ。<br><br>
-そこに眠る本物の宝箱を開き、<br>
-運命の抽選券を1枚引くがよい！」
-</p>
-</div>
+      <form id="answerForm">
+        <input
+          type="text"
+          id="answer"
+          placeholder="答えを入力"
+          autocomplete="off"
+          required
+        >
 
-<p>
-<strong>📍 ゴール：フロント</strong><br>
-スタッフと一緒に宝箱を開けて、<br>
-中から抽選券を1枚引こう！
-</p>
-</div>
-</div>
+        <button type="submit">
+          答えを確認する
+        </button>
+      </form>
 
-<script>
-let solved=false;
-function checkPuzzle(){
- if(solved)return;
- const value=document.getElementById("lastDigit").value.trim();
- if(value==="8"){
-  solved=true;
-  document.getElementById("puzzleArea").style.display="none";
-  document.getElementById("slot3").textContent="8";
-  document.getElementById("result").style.display="block";
- }else{
-  document.getElementById("puzzleFeedback").textContent=
-   "☠️ 違うようだ。錨が1つ増えると数字はいくつ増える？";
- }
-}
-</script>
+      <div id="result" aria-live="polite"></div>
+
+    </section>
+
+    <div class="footer">
+      PIRATE TREASURE HUNT
+    </div>
+
+  </main>
+
+  <script>
+    const form = document.getElementById("answerForm");
+    const answerInput = document.getElementById("answer");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const answer = answerInput.value
+        .trim()
+        .normalize("NFKC")
+        .replace(/\s/g, "");
+
+      if (
+        answer === "風" ||
+        answer === "かぜ" ||
+        answer === "カゼ"
+      ) {
+        result.innerHTML = `
+          <div class="success">
+            <h2>⚓ 正解！ ⚓</h2>
+            <p>最後の謎を解き明かした！</p>
+            <p>宝箱の暗証番号・3桁目は</p>
+            <div class="number">2</div>
+            <p>
+              これで3つの数字がそろった！<br>
+              フロントの宝箱に向かい、<br>
+              暗証番号を入力しよう！
+            </p>
+          </div>
+        `;
+      } else {
+        result.innerHTML = `
+          <div class="error">
+            まだ正解ではないようだ…。<br>
+            もう一度考えてみよう！
+          </div>
+        `;
+      }
+    });
+  </script>
+
 </body>
 </html>
