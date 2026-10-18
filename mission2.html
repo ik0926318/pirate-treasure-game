@@ -6,80 +6,98 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>第2問｜海賊王の秘宝</title>
 <style>
-* {box-sizing:border-box}
-body {
-  margin:0;
-  padding:24px 15px;
-  font-family:"Yu Mincho",serif;
-  color:#39230e;
-  background:repeating-linear-gradient(
-    30deg,#382517,#382517 10px,#45301d 11px);
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100vh;padding:30px 12px 50px;
+  font-family:"Yu Mincho","Hiragino Mincho ProN",Georgia,serif;
+  color:#40342d;
+  background:radial-gradient(ellipse at top,#4a3337,#24191e 60%,#140f15);
 }
-.container {max-width:650px;margin:auto}
-header {text-align:center;color:#ffe1a0;margin-bottom:25px}
-h1 {font-size:clamp(30px,7vw,44px);margin:10px 0}
-.paper {
-  background:#f8e4b6;
-  border:8px solid #b88a4a;
-  border-radius:15px;
-  padding:25px 20px;
-  box-shadow:0 12px 30px #0008;
+header{text-align:center;color:#fff0cd;margin-bottom:26px}
+header h1{font-size:clamp(28px,7vw,44px);margin:12px 0}
+header small{letter-spacing:2px}
+.card{
+  max-width:760px;margin:auto;padding:24px;
+  background:#faf8f0;border:8px solid #c8a36b;
+  border-radius:15px;box-shadow:0 14px 45px #0008;
 }
-.tag {
-  display:inline-block;
-  background:#8e231e;color:white;
-  padding:9px 20px;border-radius:5px;
+.location{
+  display:inline-block;background:#ad4050;color:white;
+  padding:11px 18px;border-radius:5px;font-weight:bold;
 }
-h2 {text-align:center;font-size:27px}
-.scene {
-  width:100%;
-  border:4px solid #a47a43;
-  border-radius:10px;overflow:hidden;
+h2{text-align:center;font-size:25px;margin:25px 0}
+.art{
+  border:4px solid #b68c58;border-radius:10px;
+  overflow:hidden;background:#d6a86a;
 }
-.scene svg {display:block;width:100%;height:auto}
-.story,.riddle {font-size:17px;line-height:2}
-.riddle {
-  padding:18px;background:#e9c991;
-  border-left:5px solid #8e5b2d;
+.art svg{display:block;width:100%;height:auto}
+.intro{line-height:2;margin:20px 0}
+.riddle{
+  padding:20px;background:#eee1cd;
+  border-left:5px solid #a77850;
+  line-height:2.1;font-size:16px;
 }
-.question {font-size:22px;font-weight:bold;text-align:center}
-input {
-  width:100%;padding:15px;font-size:18px;
-  border:2px solid #a67c43;border-radius:8px;
+.question{
+  text-align:center;font-size:20px;
+  font-weight:bold;line-height:1.8;margin:25px 0 18px;
 }
-button {
-  width:100%;padding:16px;margin-top:12px;
-  background:#743817;color:white;border:0;
-  border-radius:8px;font-size:19px;cursor:pointer;
+input{
+  width:100%;padding:16px;border:2px solid #b8a084;
+  border-radius:6px;font-size:18px;text-align:center;
 }
-#result {text-align:center;margin-top:20px;font-weight:bold}
-.treasure {
-  display:none;text-align:center;
-  background:linear-gradient(135deg,#fff4c9,#e5bb70);
-  border:3px solid #ad792b;
-  border-radius:12px;padding:20px;margin-top:20px;
+button{
+  width:100%;padding:16px;margin-top:13px;
+  border:0;border-radius:6px;background:#8d3845;
+  color:white;font-size:18px;font-weight:bold;cursor:pointer;
 }
-.digit {
-  font-size:110px;font-weight:bold;
-  color:#703512;line-height:1.3;
+button:hover{background:#702b37}
+#result{text-align:center;margin-top:20px}
+.success{
+  padding:24px 15px;background:#f0e3c7;
+  border:2px solid #c4a36a;border-radius:8px;line-height:1.9;
+}
+.success h3{margin:0;color:#765326;font-size:26px}
+.number{
+  font-size:90px;line-height:1.2;
+  color:#9a6730;font-weight:bold;
+}
+.where{
+  margin-top:20px;background:#fff8e8;
+  border:1px solid #c4a36a;border-radius:8px;padding:15px;
+}
+.where strong{color:#783747}
+.where p{margin:8px 0}
+.notice{
+  margin-top:20px;padding:15px;background:#fff5dc;
+  border:2px solid #b68c58;border-radius:6px;
+  color:#783747;font-weight:bold;
+}
+.error{color:#a4323c;font-weight:bold}
+footer{
+  text-align:center;color:#d9c8a8;
+  margin-top:25px;font-size:12px;letter-spacing:2px;
+}
+@media(max-width:550px){
+  .card{padding:18px 14px;border-width:6px}
+  .riddle{padding:16px;font-size:15px}
+  .number{font-size:80px}
 }
 </style>
 </head>
 <body>
-<div class="container">
+
 <header>
-  <div>🏴‍☠️ ANNIVERSARY EVENT</div>
+  <small>🏴‍☠️ ANNIVERSARY EVENT</small>
   <h1>海賊王の秘宝</h1>
   <div>〜失われた宝の謎〜</div>
 </header>
 
-<main class="paper">
-  <span class="tag">第2問｜各更衣室</span>
+<main class="card">
+  <span class="location">第2問｜各更衣室</span>
   <h2>船長の航海日誌</h2>
 
-  <div class="scene">
-    <svg viewBox="0 0 600 340"
-      xmlns="http://www.w3.org/2000/svg">
+  <div class="art">
+    <svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="sky" x2="0" y2="1">
           <stop offset="0%" stop-color="#63406a"/>
@@ -92,44 +110,23 @@ button {
         </linearGradient>
       </defs>
       <rect width="600" height="340" fill="url(#sky)"/>
-      <circle cx="430" cy="143" r="53"
-        fill="#ffe0a0" opacity=".85"/>
-      <path d="M0 190 L75 130 L150 180 L240 115
-        L330 185 L420 145 L520 185 L600 140
-        V235 H0Z" fill="#675268"/>
-      <rect y="205" width="600" height="135"
-        fill="url(#sea)"/>
+      <circle cx="430" cy="143" r="53" fill="#ffe0a0" opacity=".85"/>
+      <path d="M0 190 L75 130 L150 180 L240 115 L330 185 L420 145 L520 185 L600 140 V235 H0Z"
+            fill="#675268"/>
+      <rect y="205" width="600" height="135" fill="url(#sea)"/>
       <g fill="#493847">
         <rect x="10" y="155" width="50" height="55"/>
         <rect x="70" y="170" width="65" height="40"/>
         <rect x="145" y="145" width="50" height="65"/>
-        <path d="M5 155L35 125L65 155Z"/>
-        <path d="M65 170L102 140L140 170Z"/>
-        <path d="M140 145L170 112L200 145Z"/>
-      </g>
-      <g>
-        <path d="M530 110L565 110L575 210L520 210Z"
-          fill="#e5cda5"/>
-        <rect x="532" y="92" width="31" height="24"
-          fill="#eab965"/>
-        <path d="M526 92L548 72L570 92Z"
-          fill="#5b3845"/>
+        <path d="M5 155L35 125L65 155Z M65 170L102 140L140 170Z M140 145L170 112L200 145Z"/>
       </g>
       <g transform="translate(295 195)">
-        <path d="M-115 55L115 55L80 94L-75 94Z"
-          fill="#412c32"/>
-        <path d="M0 -130V55" stroke="#412c32"
-          stroke-width="8"/>
-        <path d="M-58 -100V50" stroke="#412c32"
-          stroke-width="5"/>
-        <path d="M58 -90V50" stroke="#412c32"
-          stroke-width="5"/>
-        <path d="M-7 -120L-7 25L-85 25Z"
-          fill="#e9d2aa"/>
-        <path d="M8 -110L80 20L8 20Z"
-          fill="#f0dbb6"/>
-        <path d="M0 -130L65 -115L0 -100Z"
-          fill="#29252c"/>
+        <path d="M-115 55L115 55L80 94L-75 94Z" fill="#412c32"/>
+        <path d="M0 -130V55 M-58 -100V50 M58 -90V50"
+              stroke="#412c32" stroke-width="7"/>
+        <path d="M-7 -120L-7 25L-85 25Z" fill="#e9d2aa"/>
+        <path d="M8 -110L80 20L8 20Z" fill="#f0dbb6"/>
+        <path d="M0 -130L65 -115L0 -100Z" fill="#29252c"/>
       </g>
       <g fill="#4d332e">
         <path d="M0 265L165 245L185 265L0 295Z"/>
@@ -139,62 +136,85 @@ button {
     </svg>
   </div>
 
-  <p class="story">
+  <p class="intro">
     海賊船の船長が残した古い航海日誌には、
     次のような言葉が記されていた。
   </p>
 
   <div class="riddle">
     「私は海のそばにある。<br>
-    船が旅立つときも、帰ってくるときも、
-    私のもとを通る。<br>
+    船が旅立つときも、帰ってくるときも、私のもとを通る。<br>
     私は船にとっての入口であり、出口でもある。<br>
-    長い航海を終えた船乗りたちは、
-    私の姿を見ると安心する。」
+    長い航海を終えた船乗りたちは、私の姿を見ると安心する。」
   </div>
 
   <p class="question">さて、この場所はどこだろう？</p>
 
-  <form id="quiz">
-    <input id="answer" placeholder="答えを入力してください"
-      autocomplete="off" required>
-    <button type="submit">答え合わせ</button>
-  </form>
+  <input id="answer" type="text"
+         placeholder="答えを入力してください" autocomplete="off">
+  <button type="button" id="checkButton">答えを確認する</button>
 
   <div id="result" aria-live="polite"></div>
-
-  <div id="treasure" class="treasure">
-    <h2>🎉 正解！</h2>
-    <p>宝箱の暗証番号を発見！</p>
-    <p>🔑 2桁目の数字</p>
-    <div class="digit">7</div>
-    <p>この数字を忘れずにメモしよう！</p>
-    <p>残りの謎を解き、3桁の暗証番号を完成させよう！</p>
-  </div>
 </main>
-</div>
+
+<footer>PIRATE TREASURE HUNT</footer>
 
 <script>
-document.getElementById("quiz").addEventListener("submit",e=>{
-  e.preventDefault();
-  const answer=document.getElementById("answer").value
-    .normalize("NFKC").replace(/[\s　]/g,"").toLowerCase();
+(function(){
+  const input = document.getElementById("answer");
+  const button = document.getElementById("checkButton");
+  const result = document.getElementById("result");
 
-  const correct=["港","みなと","ミナト"];
+  const correct = ["港","みなと","ミナト"];
 
-  const result=document.getElementById("result");
-  const treasure=document.getElementById("treasure");
+  function checkAnswer(){
+    const answer = input.value.normalize("NFKC")
+      .replace(/[\s　]/g,"").toLowerCase();
 
-  if(correct.includes(answer)){
-    result.textContent="お宝への道が開かれた！";
-    result.style.color="#17652d";
-    treasure.style.display="block";
-  }else{
-    result.textContent="残念！もう一度考えてみよう。";
-    result.style.color="#a12222";
-    treasure.style.display="none";
+    const isCorrect = correct.some(
+      word => word.normalize("NFKC").toLowerCase() === answer
+    );
+
+    if(isCorrect){
+      result.innerHTML = `
+        <div class="success">
+          <h3>⚓ 正解！ ⚓</h3>
+          <p>宝箱の暗証番号、左から2桁目は</p>
+          <div class="number">7</div>
+          <p>この数字を忘れずにメモしよう！</p>
+
+          <div class="where">
+            <b>まだ見つけていない暗証番号はないか？</b>
+            <p>🔑 左から1桁目：<strong>フロント</strong></p>
+            <p>🔑 左から3桁目：<strong>青空エリア</strong></p>
+          </div>
+
+          <div class="notice">
+            3つの暗証番号がそろったら、<br>
+            フロントで宝箱を開封できるぞ！<br>
+            <small>
+              ※開封の際はフロントスタッフにお声がけください。<br>
+              スタッフ立ち会いのもとで開封していただきます。
+            </small>
+          </div>
+        </div>`;
+    }else{
+      result.innerHTML =
+        '<p class="error">まだ正解ではないようだ…。もう一度考えてみよう！</p>';
+    }
+
+    result.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
-});
+
+  button.addEventListener("click",checkAnswer);
+  input.addEventListener("keydown",function(e){
+    if(e.key === "Enter"){
+      e.preventDefault();
+      checkAnswer();
+    }
+  });
+})();
 </script>
+
 </body>
 </html>
