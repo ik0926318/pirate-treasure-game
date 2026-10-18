@@ -3,111 +3,70 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>第2問｜海賊王の秘宝</title>
 <style>
-* { box-sizing: border-box; }
+* {box-sizing:border-box}
 body {
-  margin: 0;
-  padding: 24px 15px;
-  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
-  color: #39230e;
-  background:
-    linear-gradient(#24150888,#24150888),
-    repeating-linear-gradient(30deg,#70502f,#70502f 8px,#644426 9px);
+  margin:0;
+  padding:24px 15px;
+  font-family:"Yu Mincho",serif;
+  color:#39230e;
+  background:repeating-linear-gradient(
+    30deg,#382517,#382517 10px,#45301d 11px);
 }
-.container {
-  max-width: 650px;
-  margin: auto;
-}
-header {
-  text-align: center;
-  color: #ffe1a0;
-  margin-bottom: 24px;
-}
-header h1 {
-  font-size: clamp(27px,7vw,42px);
-  margin: 8px 0;
-}
+.container {max-width:650px;margin:auto}
+header {text-align:center;color:#ffe1a0;margin-bottom:25px}
+h1 {font-size:clamp(30px,7vw,44px);margin:10px 0}
 .paper {
-  background: #f8e4b6;
-  border: 8px solid #b88a4a;
-  border-radius: 15px;
-  padding: 25px 20px;
-  box-shadow: 0 12px 30px #0008;
+  background:#f8e4b6;
+  border:8px solid #b88a4a;
+  border-radius:15px;
+  padding:25px 20px;
+  box-shadow:0 12px 30px #0008;
 }
 .tag {
-  display: inline-block;
-  background: #8e231e;
-  color: white;
-  padding: 9px 20px;
-  border-radius: 5px;
-  font-weight: bold;
+  display:inline-block;
+  background:#8e231e;color:white;
+  padding:9px 20px;border-radius:5px;
 }
-h2 {
-  text-align: center;
-  font-size: 27px;
-}
+h2 {text-align:center;font-size:27px}
 .scene {
-  width: 100%;
-  margin: 16px 0;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 4px solid #a47a43;
+  width:100%;
+  border:4px solid #a47a43;
+  border-radius:10px;overflow:hidden;
 }
-.scene svg {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.story {
-  font-size: 17px;
-  line-height: 2;
-}
+.scene svg {display:block;width:100%;height:auto}
+.story,.riddle {font-size:17px;line-height:2}
 .riddle {
-  padding: 18px;
-  background: #e9c991;
-  border-left: 5px solid #8e5b2d;
-  line-height: 2.1;
-  font-size: 17px;
+  padding:18px;background:#e9c991;
+  border-left:5px solid #8e5b2d;
 }
-.question {
-  font-size: 22px;
-  font-weight: bold;
-  text-align: center;
-}
+.question {font-size:22px;font-weight:bold;text-align:center}
 input {
-  width: 100%;
-  padding: 15px;
-  font-size: 18px;
-  border: 2px solid #a67c43;
-  border-radius: 8px;
+  width:100%;padding:15px;font-size:18px;
+  border:2px solid #a67c43;border-radius:8px;
 }
 button {
-  width: 100%;
-  padding: 16px;
-  margin-top: 12px;
-  border: none;
-  border-radius: 8px;
-  background: #743817;
-  color: white;
-  font-size: 19px;
-  font-weight: bold;
-  cursor: pointer;
+  width:100%;padding:16px;margin-top:12px;
+  background:#743817;color:white;border:0;
+  border-radius:8px;font-size:19px;cursor:pointer;
 }
-#result {
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 20px;
-  line-height: 1.8;
+#result {text-align:center;margin-top:20px;font-weight:bold}
+.treasure {
+  display:none;text-align:center;
+  background:linear-gradient(135deg,#fff4c9,#e5bb70);
+  border:3px solid #ad792b;
+  border-radius:12px;padding:20px;margin-top:20px;
+}
+.digit {
+  font-size:110px;font-weight:bold;
+  color:#703512;line-height:1.3;
 }
 </style>
 </head>
 <body>
-
 <div class="container">
-
 <header>
   <div>🏴‍☠️ ANNIVERSARY EVENT</div>
   <h1>海賊王の秘宝</h1>
@@ -115,179 +74,127 @@ button {
 </header>
 
 <main class="paper">
+  <span class="tag">第2問｜各更衣室</span>
+  <h2>船長の航海日誌</h2>
 
-<span class="tag">第2問｜難易度：普通</span>
+  <div class="scene">
+    <svg viewBox="0 0 600 340"
+      xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sky" x2="0" y2="1">
+          <stop offset="0%" stop-color="#63406a"/>
+          <stop offset="55%" stop-color="#db805b"/>
+          <stop offset="100%" stop-color="#f3bd72"/>
+        </linearGradient>
+        <linearGradient id="sea" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ac745c"/>
+          <stop offset="100%" stop-color="#29465c"/>
+        </linearGradient>
+      </defs>
+      <rect width="600" height="340" fill="url(#sky)"/>
+      <circle cx="430" cy="143" r="53"
+        fill="#ffe0a0" opacity=".85"/>
+      <path d="M0 190 L75 130 L150 180 L240 115
+        L330 185 L420 145 L520 185 L600 140
+        V235 H0Z" fill="#675268"/>
+      <rect y="205" width="600" height="135"
+        fill="url(#sea)"/>
+      <g fill="#493847">
+        <rect x="10" y="155" width="50" height="55"/>
+        <rect x="70" y="170" width="65" height="40"/>
+        <rect x="145" y="145" width="50" height="65"/>
+        <path d="M5 155L35 125L65 155Z"/>
+        <path d="M65 170L102 140L140 170Z"/>
+        <path d="M140 145L170 112L200 145Z"/>
+      </g>
+      <g>
+        <path d="M530 110L565 110L575 210L520 210Z"
+          fill="#e5cda5"/>
+        <rect x="532" y="92" width="31" height="24"
+          fill="#eab965"/>
+        <path d="M526 92L548 72L570 92Z"
+          fill="#5b3845"/>
+      </g>
+      <g transform="translate(295 195)">
+        <path d="M-115 55L115 55L80 94L-75 94Z"
+          fill="#412c32"/>
+        <path d="M0 -130V55" stroke="#412c32"
+          stroke-width="8"/>
+        <path d="M-58 -100V50" stroke="#412c32"
+          stroke-width="5"/>
+        <path d="M58 -90V50" stroke="#412c32"
+          stroke-width="5"/>
+        <path d="M-7 -120L-7 25L-85 25Z"
+          fill="#e9d2aa"/>
+        <path d="M8 -110L80 20L8 20Z"
+          fill="#f0dbb6"/>
+        <path d="M0 -130L65 -115L0 -100Z"
+          fill="#29252c"/>
+      </g>
+      <g fill="#4d332e">
+        <path d="M0 265L165 245L185 265L0 295Z"/>
+        <rect x="25" y="280" width="13" height="60"/>
+        <rect x="120" y="266" width="13" height="74"/>
+      </g>
+    </svg>
+  </div>
 
-<h2>船長の航海日誌</h2>
+  <p class="story">
+    海賊船の船長が残した古い航海日誌には、
+    次のような言葉が記されていた。
+  </p>
 
-<div class="scene">
-<svg viewBox="0 0 600 340"
-xmlns="http://www.w3.org/2000/svg">
+  <div class="riddle">
+    「私は海のそばにある。<br>
+    船が旅立つときも、帰ってくるときも、
+    私のもとを通る。<br>
+    私は船にとっての入口であり、出口でもある。<br>
+    長い航海を終えた船乗りたちは、
+    私の姿を見ると安心する。」
+  </div>
 
-<defs>
-  <linearGradient id="sky" x2="0" y2="1">
-    <stop offset="0%" stop-color="#63406a"/>
-    <stop offset="55%" stop-color="#db805b"/>
-    <stop offset="100%" stop-color="#f3bd72"/>
-  </linearGradient>
-  <linearGradient id="sea" x2="0" y2="1">
-    <stop offset="0%" stop-color="#ac745c"/>
-    <stop offset="100%" stop-color="#29465c"/>
-  </linearGradient>
-</defs>
+  <p class="question">さて、この場所はどこだろう？</p>
 
-<!-- 夕焼けの空 -->
-<rect width="600" height="340" fill="url(#sky)"/>
+  <form id="quiz">
+    <input id="answer" placeholder="答えを入力してください"
+      autocomplete="off" required>
+    <button type="submit">答え合わせ</button>
+  </form>
 
-<!-- 太陽 -->
-<circle cx="430" cy="143" r="53"
-fill="#ffe0a0" opacity="0.85"/>
+  <div id="result" aria-live="polite"></div>
 
-<!-- 遠くの山 -->
-<path d="M0 190 L75 130 L150 180 L240 115
-L330 185 L420 145 L520 185 L600 140
-V235 H0Z" fill="#675268" opacity="0.75"/>
-
-<!-- 海 -->
-<rect y="205" width="600" height="135"
-fill="url(#sea)"/>
-
-<!-- 波 -->
-<g stroke="#f6c68d" stroke-width="3"
-opacity="0.6" fill="none">
-<path d="M0 235 Q40 227 80 235 T160 235 T240 235 T320 235 T400 235 T480 235 T600 235"/>
-<path d="M0 270 Q50 260 100 270 T200 270 T300 270 T400 270 T500 270 T600 270"/>
-<path d="M0 310 Q35 302 70 310 T140 310 T210 310 T280 310 T350 310 T420 310 T490 310 T600 310"/>
-</g>
-
-<!-- 港の建物 -->
-<g fill="#493847">
-<rect x="10" y="155" width="50" height="55"/>
-<rect x="70" y="170" width="65" height="40"/>
-<rect x="145" y="145" width="50" height="65"/>
-<rect x="205" y="178" width="45" height="32"/>
-<path d="M5 155 L35 125 L65 155Z"/>
-<path d="M65 170 L102 140 L140 170Z"/>
-<path d="M140 145 L170 112 L200 145Z"/>
-</g>
-
-<!-- 灯台 -->
-<g>
-<path d="M530 110 L565 110 L575 210
-L520 210Z" fill="#e5cda5"/>
-<rect x="532" y="92" width="31" height="24"
-fill="#eab965"/>
-<path d="M526 92 L548 72 L570 92Z"
-fill="#5b3845"/>
-<rect x="541" y="98" width="13" height="12"
-fill="#fff1ad"/>
-</g>
-
-<!-- 海賊船 -->
-<g transform="translate(295 195)">
-<path d="M-115 55 L115 55 L80 94
-L-75 94Z" fill="#412c32"/>
-<path d="M-105 55 H105" stroke="#b68a5d"
-stroke-width="6"/>
-<path d="M0 -130 V55" stroke="#412c32"
-stroke-width="8"/>
-<path d="M-58 -100 V50" stroke="#412c32"
-stroke-width="5"/>
-<path d="M58 -90 V50" stroke="#412c32"
-stroke-width="5"/>
-<path d="M-7 -120 L-7 25 L-85 25Z"
-fill="#e9d2aa"/>
-<path d="M8 -110 L80 20 L8 20Z"
-fill="#f0dbb6"/>
-<path d="M-65 -90 L-65 5 L-110 5Z"
-fill="#d9bb92"/>
-<path d="M0 -130 L65 -115 L0 -100Z"
-fill="#29252c"/>
-<circle cx="0" cy="-115" r="5" fill="#e6c9a1"/>
-</g>
-
-<!-- 桟橋 -->
-<g fill="#4d332e" stroke="#302321"
-stroke-width="3">
-<path d="M0 265 L165 245 L185 265
-L0 295Z"/>
-<rect x="25" y="280" width="13" height="60"/>
-<rect x="120" y="266" width="13" height="74"/>
-</g>
-
-</svg>
-</div>
-
-<p class="story">
-海賊船の船長が残した古い航海日誌には、
-次のような言葉が記されていた。
-</p>
-
-<div class="riddle">
-「私は海のそばにある。<br>
-船が旅立つときも、帰ってくるときも、
-私のもとを通る。<br>
-私は船にとっての入口であり、出口でもある。<br>
-長い航海を終えた船乗りたちは、
-私の姿を見ると安心する。」
-</div>
-
-<p class="question">
-さて、この場所はどこだろう？
-</p>
-
-<input
-  id="answer"
-  placeholder="答えを入力してください"
-  autocomplete="off"
->
-
-<button onclick="checkAnswer()">
-答え合わせ
-</button>
-
-<div id="result" aria-live="polite"></div>
-
+  <div id="treasure" class="treasure">
+    <h2>🎉 正解！</h2>
+    <p>宝箱の暗証番号を発見！</p>
+    <p>🔑 2桁目の数字</p>
+    <div class="digit">7</div>
+    <p>この数字を忘れずにメモしよう！</p>
+    <p>残りの謎を解き、3桁の暗証番号を完成させよう！</p>
+  </div>
 </main>
 </div>
 
 <script>
-function checkAnswer() {
-  const answer = document.getElementById("answer")
-    .value.normalize("NFKC")
-    .replace(/[\s　]/g, "")
-    .toLowerCase();
+document.getElementById("quiz").addEventListener("submit",e=>{
+  e.preventDefault();
+  const answer=document.getElementById("answer").value
+    .normalize("NFKC").replace(/[\s　]/g,"").toLowerCase();
 
-  const correct = [
-    "港",
-    "みなと",
-    "ミナト"
-  ];
+  const correct=["港","みなと","ミナト"];
 
-  const result = document.getElementById("result");
+  const result=document.getElementById("result");
+  const treasure=document.getElementById("treasure");
 
-  if (correct.includes(answer)) {
-    result.style.color = "#17652d";
-    result.innerHTML =
-      "🎉 正解！<br>海賊船は無事に港へ到着した！<br>秘宝まであと少し！";
-  } else if (!answer) {
-    result.style.color = "#743817";
-    result.textContent =
-      "答えを入力してね！";
-  } else {
-    result.style.color = "#a12222";
-    result.textContent =
-      "残念！もう一度、船長の日誌を読み解こう。";
+  if(correct.includes(answer)){
+    result.textContent="お宝への道が開かれた！";
+    result.style.color="#17652d";
+    treasure.style.display="block";
+  }else{
+    result.textContent="残念！もう一度考えてみよう。";
+    result.style.color="#a12222";
+    treasure.style.display="none";
   }
-}
-
-document.getElementById("answer")
-  .addEventListener("keydown", function(e) {
-    if (e.key === "Enter" && !e.isComposing) {
-      checkAnswer();
-    }
-  });
+});
 </script>
-
 </body>
 </html>
