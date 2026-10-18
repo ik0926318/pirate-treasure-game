@@ -3,246 +3,206 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>海賊王の秘宝｜狂った羅針盤</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第1問｜海賊王の秘宝</title>
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;min-height:100vh;padding:20px 12px;
- background:radial-gradient(circle at top,#344b55,#101b29 75%);
- color:#f5dfb2;font-family:Georgia,"Yu Mincho",serif;
- text-align:center;
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 24px 15px;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  color: #39230e;
+  background:
+    linear-gradient(#24150888,#24150888),
+    repeating-linear-gradient(30deg,#70502f,#70502f 8px,#644426 9px);
 }
-.game{
- max-width:460px;margin:auto;padding:24px 15px;
- background:#1b2934;border:2px solid #bc9552;
- border-radius:16px;
+.container {
+  max-width: 650px;
+  margin: auto;
 }
-small{color:#d6b678;letter-spacing:3px}
-h1{color:#f1c775;font-size:27px}
-.paper,.hint{
- background:#ead5a8;color:#392719;border-radius:12px;
- padding:17px 13px;margin:18px 0;line-height:1.9;
+header {
+  text-align: center;
+  color: #ffe1a0;
+  margin-bottom: 24px;
 }
-.hint{border:3px double #b38a4e}
-.hint h2{font-size:19px}
-#question{font-size:19px;font-weight:bold}
-.code-progress{
- display:flex;justify-content:center;gap:12px;
- margin:18px 0;
+header h1 {
+  font-size: clamp(27px,7vw,42px);
+  margin: 8px 0;
 }
-.code-slot{
- background:#ead5a8;color:#392719;
- width:78px;padding:12px 5px;border-radius:9px;
+.paper {
+  background: #f8e4b6;
+  border: 8px solid #b88a4a;
+  border-radius: 15px;
+  padding: 25px 20px;
+  box-shadow: 0 12px 30px #0008;
 }
-.code-slot span{display:block;font-size:12px}
-.code-slot strong{font-size:34px}
-.progress{display:flex;gap:8px;margin:18px 0}
-.step{
- flex:1;border:1px solid #b08c51;border-radius:8px;
- padding:10px 4px;background:#283843;font-size:13px;
+.tag {
+  display: inline-block;
+  background: #8e231e;
+  color: white;
+  padding: 9px 20px;
+  border-radius: 5px;
+  font-weight: bold;
 }
-.step.active{background:#d4a655;color:#291c0c}
-.step.done{background:#315e4a;color:#e8ffdf}
-.compass{
- position:relative;width:255px;height:255px;
- margin:22px auto;border:9px solid #bc9552;
- border-radius:50%;
- background:radial-gradient(circle,#f2dfb3,#c7a66d);
- box-shadow:0 0 0 4px #624924,0 8px 20px #0007;
- color:#4d301c;
+h2 {
+  text-align: center;
+  font-size: 27px;
 }
-.direction{position:absolute;font-size:23px;font-weight:bold}
-.north{top:8px;left:50%;transform:translateX(-50%)}
-.south{bottom:8px;left:50%;transform:translateX(-50%)}
-.east{right:12px;top:50%;transform:translateY(-50%)}
-.west{left:12px;top:50%;transform:translateY(-50%)}
-.needle{
- position:absolute;top:50%;left:50%;width:0;height:0;
- transform:translate(-50%,-50%) rotate(0deg);
- transition:transform .3s ease;
+.scene {
+  width: 100%;
+  margin: 16px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #d9b477;
 }
-.needle:before{
- content:"";position:absolute;bottom:0;left:-13px;
- border-left:13px solid transparent;
- border-right:13px solid transparent;
- border-bottom:88px solid #a32e25;
+.scene svg { display:block; width:100%; height:auto; }
+.story {
+  font-size: 17px;
+  line-height: 2;
 }
-.needle:after{
- content:"";position:absolute;top:0;left:-13px;
- border-left:13px solid transparent;
- border-right:13px solid transparent;
- border-top:88px solid #384c5b;
+.riddle {
+  padding: 18px;
+  background: #e9c991;
+  border-left: 5px solid #8e5b2d;
+  line-height: 2.1;
+  font-size: 17px;
 }
-.center{
- position:absolute;width:19px;height:19px;
- background:#d5a94c;border:3px solid #68491f;
- border-radius:50%;top:50%;left:50%;
- transform:translate(-50%,-50%);
+.question {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
 }
-#selected{color:#f1c775;font-size:23px;font-weight:bold}
-.controls{display:flex;gap:10px}
-button{
- cursor:pointer;border:0;border-radius:9px;
- padding:14px 12px;background:#d4a655;
- color:#291c0c;font-size:15px;font-weight:bold;
+input {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  border: 2px solid #a67c43;
+  border-radius: 8px;
 }
-.controls button{flex:1}
-.confirm{width:100%;margin-top:14px;background:#f0c875}
-#feedback{min-height:52px;line-height:1.7}
-#result{
- display:none;background:#ead5a8;color:#392719;
- border-radius:12px;padding:20px 12px;
- line-height:2;margin-top:20px;
+button {
+  width: 100%;
+  padding: 16px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #743817;
+  color: white;
+  font-size: 19px;
+  font-weight: bold;
+  cursor: pointer;
 }
-.number{font-size:70px;color:#8d531b;font-weight:bold}
-.message{
- border:2px dashed #9e7544;border-radius:10px;
- padding:14px 10px;margin-top:15px;
+#result {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
 }
 </style>
 </head>
 <body>
-<div class="game">
-<small>MISSION 01</small>
-<h1>🧭 狂った羅針盤</h1>
+<div class="container">
+<header>
+  <div>🏴‍☠️ ANNIVERSARY EVENT</div>
+  <h1>海賊王の秘宝</h1>
+  <div>〜失われた宝の謎〜</div>
+</header>
 
-<div class="paper">
-<strong>🏴‍☠️ 海賊王の宝探し</strong>
-<p>
-館内に隠された3つの試練をクリアして、<br>
-宝箱の3桁の暗証番号を集めよう！
-</p>
-<p>
-この第1問をクリアすると、<br>
-<strong>暗証番号の1桁目</strong>が手に入る！
-</p>
-</div>
+<main class="paper">
+  <span class="tag">第1問｜難易度：普通</span>
+  <h2>海賊の航海日誌</h2>
 
-<div class="code-progress">
-<div class="code-slot"><span>1桁目</span><strong>?</strong></div>
-<div class="code-slot"><span>2桁目</span><strong>?</strong></div>
-<div class="code-slot"><span>3桁目</span><strong>?</strong></div>
-</div>
+  <div class="scene">
+    <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+      <rect width="600" height="300" fill="#d6a86a"/>
+      <path d="M90 60 Q180 15 265 85 T490 80 L515 235 Q410 260 300 225 T85 245 Z"
+        fill="#f5dda2" stroke="#8d5c32" stroke-width="5"/>
+      <path d="M125 200 Q175 100 260 155 T415 125"
+        stroke="#79502a" stroke-width="5"
+        stroke-dasharray="10 12" fill="none"/>
+      <g transform="translate(460 78)">
+        <circle r="49" fill="#b87c34" stroke="#58361a" stroke-width="5"/>
+        <circle r="35" fill="#f6df9f" stroke="#58361a" stroke-width="2"/>
+        <path d="M0 -32 L10 0 L0 32 L-10 0Z" fill="#873d23"/>
+        <path d="M-32 0H32 M0 -32V32" stroke="#58361a" stroke-width="2"/>
+        <text x="0" y="-56" text-anchor="middle" fill="#42280d" font-size="17">N</text>
+      </g>
+      <g transform="translate(115 85)">
+        <rect x="-48" y="-20" width="96" height="75" rx="7"
+          fill="#8c491d" stroke="#f5cb55" stroke-width="6"/>
+        <path d="M-48 2H48 M-15 -20V55 M15 -20V55"
+          stroke="#f5cb55" stroke-width="7"/>
+        <path d="M-48 -20 Q0 -80 48 -20"
+          fill="#c18b36" stroke="#f5cb55" stroke-width="6"/>
+      </g>
+      <g fill="#347c48">
+        <path d="M315 180 l-25 -38 24 15 12 -35 8 37 28 -15 -26 35Z"/>
+        <path d="M320 180V240" stroke="#765029" stroke-width="9"/>
+      </g>
+      <g transform="translate(460 220)">
+        <path d="M-75 15H75L45 45H-45Z" fill="#70401f"/>
+        <path d="M0 -105V15" stroke="#6a3c1c" stroke-width="6"/>
+        <path d="M-5 -100L-5 0H-65Z" fill="#fff0cb"/>
+        <path d="M8 -85V0H65Z" fill="#fff0cb"/>
+      </g>
+      <text x="300" y="280" text-anchor="middle"
+        font-size="16" fill="#714b28">THE LOST TREASURE MAP</text>
+    </svg>
+  </div>
 
-<div class="paper">
-<strong>⚓ 遊び方</strong><br>
-① ヒントを読む<br>
-② 左右のボタンで赤い針を回す<br>
-③ 正しい方角で決定する<br>
-④ 3つの方角を順番に当てよう！
-</div>
+  <p class="story">
+    海賊が残した日誌には、こう書かれていた。
+  </p>
 
-<div id="playArea">
-<div class="progress">
-<div class="step active" id="step0">① 1つ目</div>
-<div class="step" id="step1">② 2つ目</div>
-<div class="step" id="step2">③ 3つ目</div>
-</div>
+  <div class="riddle">
+    「私は進む道を示す。<br>
+    針を持っているが、縫い物はしない。<br>
+    海の上で迷ったとき、海賊たちは私を頼る。」
+  </div>
 
-<div class="hint">
-<h2 id="stageTitle">第1の方角を探せ！</h2>
-<div id="question">「太陽が沈む方角を指せ」</div>
-</div>
+  <p class="question">さて、私は何だろう？</p>
 
-<div class="compass">
-<div class="direction north">北</div>
-<div class="direction south">南</div>
-<div class="direction east">東</div>
-<div class="direction west">西</div>
-<div class="needle" id="needle"></div>
-<div class="center"></div>
-</div>
-
-<p>赤い針が指す方角：<span id="selected">北</span></p>
-
-<div class="controls">
-<button onclick="rotate(-1)">◀ 左に回す</button>
-<button onclick="rotate(1)">右に回す ▶</button>
-</div>
-
-<button class="confirm" onclick="confirmDirection()">
-⚓ この方角で決定！
-</button>
-<p id="feedback" aria-live="polite"></p>
-</div>
-
-<div id="result">
-<h2>🎉 第1の試練突破！</h2>
-<p>宝箱の暗証番号<br><strong>1桁目は……</strong></p>
-<div class="number">9</div>
-<p>この数字を忘れずに覚えておこう！</p>
-<div class="message">
-<strong>📜 次なる試練への手がかり</strong>
-<p>
-「冒険者が装いを整え、<br>
-新たな姿へと変わる場所の近く。<br>
-古びた地図を探し出せ！」
-</p>
-</div>
-</div>
+  <input id="answer" placeholder="答えを入力してください"
+    autocomplete="off">
+  <button onclick="checkAnswer()">答え合わせ</button>
+  <div id="result" aria-live="polite"></div>
+</main>
 </div>
 
 <script>
-const questions=[
- {text:"「太陽が沈む方角を指せ」",answer:3},
- {text:"「夜空に輝く北の星を指せ」",answer:0},
- {text:"「朝日が昇る方角を指せ」",answer:1}
-];
-const directions=["北","東","南","西"];
-let stage=0;
-let direction=0;
-let finished=false;
+function checkAnswer() {
+  const answer = document.getElementById("answer").value
+    .normalize("NFKC")
+    .replace(/[\s　]/g, "")
+    .toLowerCase();
 
-function updateCompass(){
- document.getElementById("needle").style.transform=
-  `translate(-50%,-50%) rotate(${direction*90}deg)`;
- document.getElementById("selected").textContent=directions[direction];
-}
-function rotate(amount){
- if(finished)return;
- direction=(direction+amount+4)%4;
- updateCompass();
-}
-function updateStage(){
- document.getElementById("stageTitle").textContent=
-  `第${stage+1}の方角を探せ！`;
- document.getElementById("question").textContent=questions[stage].text;
- for(let i=0;i<3;i++){
-  const el=document.getElementById("step"+i);
-  el.className="step";
-  if(i<stage){
-   el.classList.add("done");
-   el.textContent="✓ 正解";
-  }else if(i===stage){
-   el.classList.add("active");
+  const correct = [
+    "コンパス", "こんぱす",
+    "方位磁針", "ほういじしん",
+    "羅針盤", "らしんばん"
+  ];
+
+  const result = document.getElementById("result");
+
+  if (correct.includes(answer)) {
+    result.style.color = "#17652d";
+    result.innerHTML =
+      "🎉 正解！<br>宝への道がひとつ開かれた！";
+  } else if (!answer) {
+    result.style.color = "#743817";
+    result.textContent = "答えを入力してね！";
+  } else {
+    result.style.color = "#a12222";
+    result.textContent =
+      "残念！もう一度、日誌を読み解こう。";
   }
- }
 }
-function confirmDirection(){
- if(finished)return;
- const feedback=document.getElementById("feedback");
- if(direction!==questions[stage].answer){
-  feedback.style.color="#ffaaa0";
-  feedback.textContent="☠️ 方角が違うようだ。もう一度考えよう！";
-  return;
- }
- stage++;
- if(stage===3){
-  finished=true;
-  document.getElementById("playArea").style.display="none";
-  document.getElementById("result").style.display="block";
-  document.querySelector(".code-slot strong").textContent="9";
-  return;
- }
- feedback.style.color="#baf0b0";
- feedback.textContent=`⚓ 正解！続いて第${stage+1}の方角を探そう！`;
- direction=0;
- updateCompass();
- updateStage();
-}
-updateCompass();
-updateStage();
+
+document.getElementById("answer")
+  .addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && !e.isComposing) {
+      checkAnswer();
+    }
+  });
 </script>
 </body>
 </html>
