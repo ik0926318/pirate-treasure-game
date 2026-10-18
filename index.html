@@ -6,125 +6,127 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>第1問｜海賊王の秘宝</title>
 <style>
-* {box-sizing:border-box}
-body {
-  margin:0;
-  padding:24px 15px;
-  font-family:"Yu Mincho",serif;
-  color:#39230e;
-  background:repeating-linear-gradient(
-    30deg,#382517,#382517 10px,#45301d 11px);
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100vh;padding:30px 12px 50px;
+  font-family:"Yu Mincho","Hiragino Mincho ProN",Georgia,serif;
+  color:#40342d;
+  background:radial-gradient(ellipse at top,#4a3337,#24191e 60%,#140f15);
 }
-.container {max-width:650px;margin:auto}
-header {text-align:center;color:#ffe1a0;margin-bottom:25px}
-h1 {font-size:clamp(30px,7vw,44px);margin:10px 0}
-.paper {
-  background:#f8e4b6;
-  border:8px solid #b88a4a;
-  border-radius:15px;
-  padding:25px 20px;
-  box-shadow:0 12px 30px #0008;
+header{text-align:center;color:#fff0cd;margin-bottom:26px}
+header h1{font-size:clamp(28px,7vw,44px);margin:12px 0}
+header small{letter-spacing:2px}
+.card{
+  max-width:760px;margin:auto;padding:24px;
+  background:#faf8f0;border:8px solid #c8a36b;
+  border-radius:15px;box-shadow:0 14px 45px #0008;
 }
-.tag {
-  display:inline-block;
-  background:#8e231e;
-  color:white;
-  padding:9px 20px;
-  border-radius:5px;
+.location{
+  display:inline-block;background:#ad4050;color:white;
+  padding:11px 18px;border-radius:5px;font-weight:bold;
 }
-h2 {text-align:center;font-size:27px}
-.scene {
-  width:100%;
-  border:4px solid #a47a43;
-  border-radius:10px;
-  background:#d9b477;
+h2{text-align:center;font-size:25px;margin:25px 0}
+.art{
+  border:4px solid #b68c58;border-radius:10px;
+  overflow:hidden;background:#d6a86a;
 }
-.scene svg {display:block;width:100%;height:auto}
-.story,.riddle {font-size:17px;line-height:2}
-.riddle {
-  padding:18px;
-  background:#e9c991;
-  border-left:5px solid #8e5b2d;
+.art svg{display:block;width:100%;height:auto}
+.intro{line-height:2;margin:20px 0}
+.riddle{
+  padding:20px;background:#eee1cd;
+  border-left:5px solid #a77850;
+  line-height:2.1;font-size:16px;
 }
-.question {font-size:22px;font-weight:bold;text-align:center}
-input {
-  width:100%;padding:15px;font-size:18px;
-  border:2px solid #a67c43;border-radius:8px;
+.question{
+  text-align:center;font-size:20px;
+  font-weight:bold;line-height:1.8;margin:25px 0 18px;
 }
-button {
-  width:100%;padding:16px;margin-top:12px;
-  background:#743817;color:white;border:0;
-  border-radius:8px;font-size:19px;cursor:pointer;
+input{
+  width:100%;padding:16px;border:2px solid #b8a084;
+  border-radius:6px;font-size:18px;text-align:center;
 }
-#result {text-align:center;margin-top:20px;font-weight:bold}
-.treasure {
-  display:none;text-align:center;
-  background:linear-gradient(135deg,#fff4c9,#e5bb70);
-  border:3px solid #ad792b;
-  border-radius:12px;padding:20px;margin-top:20px;
+button{
+  width:100%;padding:16px;margin-top:13px;
+  border:0;border-radius:6px;background:#8d3845;
+  color:white;font-size:18px;font-weight:bold;cursor:pointer;
 }
-.digit {
-  font-size:110px;
-  font-weight:bold;
-  color:#703512;
-  line-height:1.3;
+button:hover{background:#702b37}
+#result{text-align:center;margin-top:20px}
+.success{
+  padding:24px 15px;background:#f0e3c7;
+  border:2px solid #c4a36a;border-radius:8px;line-height:1.9;
+}
+.success h3{margin:0;color:#765326;font-size:26px}
+.number{
+  font-size:90px;line-height:1.2;
+  color:#9a6730;font-weight:bold;
+}
+.where{
+  margin-top:20px;background:#fff8e8;
+  border:1px solid #c4a36a;border-radius:8px;padding:15px;
+}
+.where strong{color:#783747}
+.where p{margin:8px 0}
+.notice{
+  margin-top:20px;padding:15px;background:#fff5dc;
+  border:2px solid #b68c58;border-radius:6px;
+  color:#783747;font-weight:bold;
+}
+.error{color:#a4323c;font-weight:bold}
+footer{
+  text-align:center;color:#d9c8a8;
+  margin-top:25px;font-size:12px;letter-spacing:2px;
+}
+@media(max-width:550px){
+  .card{padding:18px 14px;border-width:6px}
+  .riddle{padding:16px;font-size:15px}
+  .number{font-size:80px}
 }
 </style>
 </head>
 <body>
-<div class="container">
+
 <header>
-  <div>🏴‍☠️ ANNIVERSARY EVENT</div>
+  <small>🏴‍☠️ ANNIVERSARY EVENT</small>
   <h1>海賊王の秘宝</h1>
   <div>〜失われた宝の謎〜</div>
 </header>
 
-<main class="paper">
-  <span class="tag">第1問｜フロント</span>
+<main class="card">
+  <span class="location">第1問｜フロント</span>
   <h2>海賊の航海日誌</h2>
 
-  <div class="scene">
-    <svg viewBox="0 0 600 300"
-      xmlns="http://www.w3.org/2000/svg">
+  <div class="art">
+    <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
       <rect width="600" height="300" fill="#d6a86a"/>
-      <path d="M90 60 Q180 15 265 85 T490 80
-        L515 235 Q410 260 300 225 T85 245Z"
-        fill="#f5dda2" stroke="#8d5c32" stroke-width="5"/>
+      <path d="M90 60 Q180 15 265 85 T490 80 L515 235 Q410 260 300 225 T85 245Z"
+            fill="#f5dda2" stroke="#8d5c32" stroke-width="5"/>
       <path d="M125 200 Q175 100 260 155 T415 125"
-        stroke="#79502a" stroke-width="5"
-        stroke-dasharray="10 12" fill="none"/>
+            stroke="#79502a" stroke-width="5" stroke-dasharray="10 12" fill="none"/>
       <g transform="translate(460 78)">
-        <circle r="49" fill="#b87c34" stroke="#58361a"
-          stroke-width="5"/>
+        <circle r="49" fill="#b87c34" stroke="#58361a" stroke-width="5"/>
         <circle r="35" fill="#f6df9f"/>
-        <path d="M0 -32 L10 0 L0 32 L-10 0Z"
-          fill="#873d23"/>
-        <path d="M-32 0H32 M0 -32V32"
-          stroke="#58361a" stroke-width="2"/>
+        <path d="M0 -32 L10 0 L0 32 L-10 0Z" fill="#873d23"/>
+        <path d="M-32 0H32 M0 -32V32" stroke="#58361a" stroke-width="2"/>
       </g>
       <g transform="translate(115 85)">
-        <rect x="-48" y="-20" width="96" height="75"
-          rx="7" fill="#8c491d" stroke="#f5cb55"
-          stroke-width="6"/>
+        <rect x="-48" y="-20" width="96" height="75" rx="7"
+              fill="#8c491d" stroke="#f5cb55" stroke-width="6"/>
         <path d="M-48 2H48 M-15 -20V55 M15 -20V55"
-          stroke="#f5cb55" stroke-width="7"/>
+              stroke="#f5cb55" stroke-width="7"/>
       </g>
       <g transform="translate(460 220)">
-        <path d="M-75 15H75L45 45H-45Z"
-          fill="#70401f"/>
-        <path d="M0 -105V15" stroke="#6a3c1c"
-          stroke-width="6"/>
+        <path d="M-75 15H75L45 45H-45Z" fill="#70401f"/>
+        <path d="M0 -105V15" stroke="#6a3c1c" stroke-width="6"/>
         <path d="M-5 -100V0H-65Z" fill="#fff0cb"/>
         <path d="M8 -85V0H65Z" fill="#fff0cb"/>
       </g>
       <text x="300" y="280" text-anchor="middle"
-        font-size="16" fill="#714b28">
-        THE LOST TREASURE MAP
-      </text>
+            font-size="16" fill="#714b28">THE LOST TREASURE MAP</text>
     </svg>
   </div>
 
-  <p class="story">海賊が残した日誌には、こう書かれていた。</p>
+  <p class="intro">海賊が残した日誌には、こう書かれていた。</p>
 
   <div class="riddle">
     「私は進む道を示す。<br>
@@ -134,49 +136,75 @@ button {
 
   <p class="question">さて、私は何だろう？</p>
 
-  <form id="quiz">
-    <input id="answer" placeholder="答えを入力してください"
-      autocomplete="off" required>
-    <button type="submit">答え合わせ</button>
-  </form>
+  <input id="answer" type="text"
+         placeholder="答えを入力してください" autocomplete="off">
+  <button type="button" id="checkButton">答えを確認する</button>
 
   <div id="result" aria-live="polite"></div>
-
-  <div id="treasure" class="treasure">
-    <h2>🎉 正解！</h2>
-    <p>宝箱の暗証番号を発見！</p>
-    <p>🔑 1桁目の数字</p>
-    <div class="digit">4</div>
-    <p>この数字を忘れずにメモしよう！</p>
-    <p>残りの謎を解き、3桁の暗証番号を完成させよう！</p>
-  </div>
 </main>
-</div>
+
+<footer>PIRATE TREASURE HUNT</footer>
 
 <script>
-document.getElementById("quiz").addEventListener("submit",e=>{
-  e.preventDefault();
-  const answer=document.getElementById("answer").value
-    .normalize("NFKC").replace(/[\s　]/g,"").toLowerCase();
+(function(){
+  const input = document.getElementById("answer");
+  const button = document.getElementById("checkButton");
+  const result = document.getElementById("result");
 
-  const correct=[
-    "コンパス","こんぱす","方位磁針",
-    "ほういじしん","羅針盤","らしんばん"
+  const correct = [
+    "コンパス","こんぱす",
+    "方位磁針","ほういじしん",
+    "羅針盤","らしんばん"
   ];
 
-  const result=document.getElementById("result");
-  const treasure=document.getElementById("treasure");
+  function checkAnswer(){
+    const answer = input.value.normalize("NFKC")
+      .replace(/[\s　]/g,"").toLowerCase();
 
-  if(correct.includes(answer)){
-    result.textContent="お宝への道が開かれた！";
-    result.style.color="#17652d";
-    treasure.style.display="block";
-  }else{
-    result.textContent="残念！もう一度考えてみよう。";
-    result.style.color="#a12222";
-    treasure.style.display="none";
+    const isCorrect = correct.some(
+      word => word.normalize("NFKC").toLowerCase() === answer
+    );
+
+    if(isCorrect){
+      result.innerHTML = `
+        <div class="success">
+          <h3>⚓ 正解！ ⚓</h3>
+          <p>宝箱の暗証番号、左から1桁目は</p>
+          <div class="number">4</div>
+          <p>この数字を忘れずにメモしよう！</p>
+
+          <div class="where">
+            <b>まだ見つけていない暗証番号はないか？</b>
+            <p>🔑 左から2桁目：<strong>更衣室</strong></p>
+            <p>🔑 左から3桁目：<strong>青空エリア</strong></p>
+          </div>
+
+          <div class="notice">
+            3つの暗証番号がそろったら、<br>
+            フロントで宝箱を開封できるぞ！<br>
+            <small>
+              ※開封の際はフロントスタッフにお声がけください。<br>
+              スタッフ立ち会いのもとで開封していただきます。
+            </small>
+          </div>
+        </div>`;
+    }else{
+      result.innerHTML =
+        '<p class="error">まだ正解ではないようだ…。もう一度考えてみよう！</p>';
+    }
+
+    result.scrollIntoView({behavior:"smooth",block:"nearest"});
   }
-});
+
+  button.addEventListener("click",checkAnswer);
+  input.addEventListener("keydown",function(e){
+    if(e.key === "Enter"){
+      e.preventDefault();
+      checkAnswer();
+    }
+  });
+})();
 </script>
+
 </body>
 </html>
