@@ -5,8 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>第3問｜船乗りを導く見えない力</title>
+
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -15,7 +18,12 @@ body {
   font-family: "Yu Mincho", "Hiragino Mincho ProN", Georgia, serif;
   color: #443b38;
   background:
-    radial-gradient(ellipse at 50% 15%, #4a3337 0%, #24191e 58%, #140f15 100%);
+    radial-gradient(
+      ellipse at 50% 15%,
+      #4a3337 0%,
+      #24191e 58%,
+      #140f15 100%
+    );
 }
 
 header {
@@ -32,7 +40,6 @@ header .event {
 header h1 {
   margin: 18px 0 10px;
   font-size: clamp(32px, 6vw, 44px);
-  font-weight: bold;
 }
 
 header .sub {
@@ -131,7 +138,9 @@ button {
   cursor: pointer;
 }
 
-button:hover { background: #702b37; }
+button:hover {
+  background: #702b37;
+}
 
 #result {
   text-align: center;
@@ -159,6 +168,16 @@ button:hover { background: #702b37; }
   font-weight: bold;
 }
 
+.notice {
+  margin-top: 20px;
+  padding: 16px;
+  background: #fff5dc;
+  border: 2px solid #b68c58;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #8d3845;
+}
+
 .error {
   color: #a4323c;
   font-weight: bold;
@@ -172,17 +191,34 @@ footer {
   letter-spacing: 2px;
 }
 
-@media(max-width: 550px) {
-  body { padding: 28px 12px; }
-  .card { padding: 19px 15px 25px; border-width: 6px; }
-  .location { font-size: 14px; }
-  h2 { font-size: 22px; }
-  .riddle { padding: 17px; font-size: 15px; }
+@media (max-width: 550px) {
+  body {
+    padding: 28px 12px;
+  }
+
+  .card {
+    padding: 19px 15px 25px;
+    border-width: 6px;
+  }
+
+  .location {
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .riddle {
+    padding: 17px;
+    font-size: 15px;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <header>
   <div class="event">⚑ ANNIVERSARY EVENT</div>
   <h1>海賊王の秘宝</h1>
@@ -190,21 +226,25 @@ footer {
 </header>
 
 <main class="card">
+
   <div class="location">第3問｜青空エリア</div>
 
   <h2>船乗りを導く見えない力</h2>
 
   <div class="art">
-    <svg viewBox="0 0 800 440"
-         xmlns="http://www.w3.org/2000/svg"
-         role="img"
-         aria-label="夕暮れの大海原を進む帆船のイラスト">
+    <svg
+      viewBox="0 0 800 440"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="夕暮れの大海原を進む帆船"
+    >
       <defs>
         <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#62578c"/>
           <stop offset="52%" stop-color="#d37b87"/>
           <stop offset="100%" stop-color="#efa77f"/>
         </linearGradient>
+
         <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#75688d"/>
           <stop offset="100%" stop-color="#244d74"/>
@@ -214,29 +254,55 @@ footer {
       <!-- 夕焼け空 -->
       <rect width="800" height="440" fill="url(#sky)"/>
 
-      <!-- 遠くの雲 -->
-      <path d="M0 130 L80 130 L110 115 L155 120 L190 105 L235 130
-               L280 130 L280 145 L0 145Z"
-            fill="#76658c" opacity=".55"/>
-      <path d="M510 95 L555 90 L590 105 L640 95 L680 115
-               L745 105 L800 125 L800 145 L510 145Z"
-            fill="#765d8b" opacity=".45"/>
+      <!-- 雲 -->
+      <path
+        d="M0 130 L80 130 L110 115 L155 120
+           L190 105 L235 130 L280 130
+           L280 145 L0 145Z"
+        fill="#76658c"
+        opacity=".55"
+      />
+
+      <path
+        d="M510 95 L555 90 L590 105 L640 95
+           L680 115 L745 105 L800 125
+           L800 145 L510 145Z"
+        fill="#765d8b"
+        opacity=".45"
+      />
 
       <!-- 太陽 -->
       <circle cx="615" cy="194" r="70" fill="#ffdfa7"/>
 
-      <!-- 遠くの島影 -->
-      <path d="M0 268 L65 234 L115 260 L172 221 L225 268Z"
-            fill="#61547b"/>
-      <path d="M500 267 L585 230 L635 249 L695 212 L800 270Z"
-            fill="#61547b"/>
+      <!-- 島影 -->
+      <path
+        d="M0 268 L65 234 L115 260
+           L172 221 L225 268Z"
+        fill="#61547b"
+      />
+
+      <path
+        d="M500 267 L585 230 L635 249
+           L695 212 L800 270Z"
+        fill="#61547b"
+      />
 
       <!-- 海 -->
-      <rect x="0" y="270" width="800" height="170" fill="url(#sea)"/>
+      <rect
+        x="0"
+        y="270"
+        width="800"
+        height="170"
+        fill="url(#sea)"
+      />
 
       <!-- 水面の反射 -->
-      <g stroke="#e5a49c" stroke-width="4"
-         stroke-linecap="round" opacity=".6">
+      <g
+        stroke="#e5a49c"
+        stroke-width="4"
+        stroke-linecap="round"
+        opacity=".6"
+      >
         <path d="M535 293 h155"/>
         <path d="M565 311 h115"/>
         <path d="M525 332 h180"/>
@@ -244,45 +310,75 @@ footer {
         <path d="M550 375 h145"/>
       </g>
 
-      <!-- 船のマスト -->
-      <g stroke="#382d43" stroke-width="9"
-         stroke-linecap="round">
+      <!-- マスト -->
+      <g
+        stroke="#382d43"
+        stroke-width="9"
+        stroke-linecap="round"
+      >
         <path d="M365 95 V338"/>
         <path d="M265 168 V332"/>
         <path d="M465 160 V330"/>
       </g>
 
       <!-- 帆 -->
-      <path d="M354 113 L285 265 L354 265Z"
-            fill="#fff2df"/>
-      <path d="M378 125 L451 266 L378 266Z"
-            fill="#f2d8ca"/>
-      <path d="M255 181 L202 273 L255 273Z"
-            fill="#f9e9d8"/>
-      <path d="M474 178 L535 275 L474 275Z"
-            fill="#f1d6cc"/>
+      <path
+        d="M354 113 L285 265 L354 265Z"
+        fill="#fff2df"
+      />
+
+      <path
+        d="M378 125 L451 266 L378 266Z"
+        fill="#f2d8ca"
+      />
+
+      <path
+        d="M255 181 L202 273 L255 273Z"
+        fill="#f9e9d8"
+      />
+
+      <path
+        d="M474 178 L535 275 L474 275Z"
+        fill="#f1d6cc"
+      />
 
       <!-- 船体 -->
-      <path d="M164 312
-               Q365 335 577 312
-               L526 374
-               Q365 399 222 374Z"
-            fill="#352c47"/>
-      <path d="M170 315 Q365 339 573 315"
-            fill="none" stroke="#b77e66" stroke-width="8"/>
+      <path
+        d="M164 312
+           Q365 335 577 312
+           L526 374
+           Q365 399 222 374Z"
+        fill="#352c47"
+      />
+
+      <path
+        d="M170 315 Q365 339 573 315"
+        fill="none"
+        stroke="#b77e66"
+        stroke-width="8"
+      />
 
       <!-- 甲板 -->
-      <path d="M230 306 H512"
-            stroke="#332c40" stroke-width="10"/>
+      <path
+        d="M230 306 H512"
+        stroke="#332c40"
+        stroke-width="10"
+      />
 
       <!-- 旗 -->
-      <path d="M370 95 L435 114 L370 130Z"
-            fill="#302c48"/>
+      <path
+        d="M370 95 L435 114 L370 130Z"
+        fill="#302c48"
+      />
 
       <!-- 波 -->
-      <g fill="none" stroke="#9da7bf"
-         stroke-width="4" opacity=".65"
-         stroke-linecap="round">
+      <g
+        fill="none"
+        stroke="#9da7bf"
+        stroke-width="4"
+        opacity=".65"
+        stroke-linecap="round"
+      >
         <path d="M65 349 Q120 337 175 349"/>
         <path d="M245 405 Q330 390 405 405"/>
         <path d="M460 414 Q540 399 630 414"/>
@@ -296,6 +392,7 @@ footer {
   </p>
 
   <div class="riddle">
+
     <p>
       それは目には見えませんが、
       存在を感じることができます。
@@ -315,73 +412,113 @@ footer {
       海の上だけでなく、
       陸の上でもその存在を感じることができます。
     </p>
+
   </div>
 
   <div class="question">
     この「あるもの」とは何でしょう？
   </div>
 
-  <form id="answerForm">
-    <input id="answer"
-           type="text"
-           placeholder="答えを入力してください"
-           autocomplete="off"
-           required>
-    <button type="submit">答えを確認する</button>
+  <!-- ページが移動しないように設定 -->
+  <form id="answerForm" onsubmit="return false;">
+
+    <input
+      id="answer"
+      type="text"
+      placeholder="答えを入力してください"
+      autocomplete="off"
+      required
+    >
+
+    <button type="button" id="checkButton">
+      答えを確認する
+    </button>
+
   </form>
 
   <div id="result" aria-live="polite"></div>
+
 </main>
 
-<footer>PIRATE TREASURE HUNT</footer>
+<footer>
+  PIRATE TREASURE HUNT
+</footer>
 
 <script>
-const form = document.getElementById("answerForm");
-const input = document.getElementById("answer");
-const result = document.getElementById("result");
+(function () {
+  "use strict";
 
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
+  const input = document.getElementById("answer");
+  const button = document.getElementById("checkButton");
+  const result = document.getElementById("result");
 
-  const answer = input.value
-    .trim()
-    .normalize("NFKC")
-    .replace(/\s/g, "");
+  function checkAnswer() {
+    const answer = input.value
+      .trim()
+      .normalize("NFKC")
+      .replace(/\s/g, "");
 
-  
-if (["風", "かぜ", "カゼ"].includes(answer)) {
-  result.innerHTML = `
-    <div class="success">
-      <h3>⚓ 正解！ ⚓</h3>
-      <p>最後の謎を解き明かした！</p>
-      <p>宝箱の暗証番号・3桁目は</p>
-      <div class="number">2</div>
-      <p>
-        これで3つの数字がそろった！<br>
-        フロントの宝箱へ向かおう！
-      </p>
-      <p style="
-        margin-top: 20px;
-        padding: 15px;
-        background: #fff5dc;
-        border: 2px solid #b68c58;
-        border-radius: 6px;
-        font-weight: bold;
-        color: #8d3845;
-      ">
-        【宝箱を開ける際のご案内】<br>
-        宝箱はスタッフ立ち会いのもとで<br>
-        開けていただきます。<br>
-        3つの数字がそろったら、<br>
-        フロントスタッフにお声がけください。
-      </p>
-    </div>
-  `;
-} else {
-  result.innerHTML = `
-    <div class="error">
-      まだ正解ではないようだ…。<br>
-      もう一度考えてみよう！
-    </div>
-  `;
-}
+    if (!answer) {
+      result.innerHTML = `
+        <div class="error">
+          答えを入力してください。
+        </div>
+      `;
+      return;
+    }
+
+    if (
+      answer === "風" ||
+      answer === "かぜ" ||
+      answer === "カゼ"
+    ) {
+      result.innerHTML = `
+        <div class="success">
+
+          <h3>⚓ 正解！ ⚓</h3>
+
+          <p>最後の謎を解き明かした！</p>
+
+          <p>宝箱の暗証番号・3桁目は</p>
+
+          <div class="number">2</div>
+
+          <p>
+            これで3つの数字がそろった！<br>
+            フロントの宝箱へ向かおう！
+          </p>
+
+          <div class="notice">
+            【宝箱を開ける際のご案内】<br><br>
+            宝箱はスタッフ立ち会いのもとで<br>
+            開けていただきます。<br><br>
+            3つの数字がそろったら、<br>
+            フロントスタッフにお声がけください。
+          </div>
+
+        </div>
+      `;
+    } else {
+      result.innerHTML = `
+        <div class="error">
+          まだ正解ではないようだ…。<br>
+          もう一度考えてみよう！
+        </div>
+      `;
+    }
+  }
+
+  button.addEventListener("click", checkAnswer);
+
+  input.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      checkAnswer();
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>
